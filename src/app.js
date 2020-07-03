@@ -29,6 +29,16 @@ app.get('/', function(req, res){
     });
 });
 
+app.get('/Farmacia', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:2
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');

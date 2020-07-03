@@ -110,8 +110,11 @@
             <div class="col-lg-9">
                 <nav class="header__menu">
                     <ul class="text-center">
-                        <li class="active"><a href="index.html">Inicio</a></li>
-                        <li><a href="farmacia.html">Farmacia</a>
+                        <li class="<% if (page == 1) { %> active <% } %>">
+                            <a href="/">Inicio</a>
+                        </li>
+                        <li class="<% if (page == 2) { %> active <% } %>">
+                            <a href="Farmacia">Farmacia</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="catalogo.html">Catálogo</a></li>
                                 <li><a href="#">Ofertas</a></li>

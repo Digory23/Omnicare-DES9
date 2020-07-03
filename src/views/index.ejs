@@ -28,6 +28,11 @@
 
 <body>
 
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
     <%- include ('shared/header') %> <!-- se incluye el header -->
 
 
@@ -35,6 +40,9 @@
     <% switch(page) {
       case 1: %>
     <%- include ('farmacia/home') %>
+    <% break
+      case 2: %>
+    <%- include ('farmacia/farmacia')%>
     <% break
       default: %>
     <%- include ('sections/404') %>
