@@ -80,6 +80,18 @@ app.get('/Detalle-Producto', function(req, res){
     });
 });
 
+
+app.get('/Checkout', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:7
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
