@@ -49,6 +49,16 @@ app.get('/Catalogo', function(req, res){
     });
 });
 
+app.get('/Contacto', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:4
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
