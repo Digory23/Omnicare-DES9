@@ -39,6 +39,16 @@ app.get('/Farmacia', function(req, res){
     });
 });
 
+app.get('/Catalogo', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:3
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');

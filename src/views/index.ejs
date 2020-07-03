@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ogani Template">
+  <meta name="keywords" content="Ogani, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Omnicare</title>
 
   <!--Links necesarios para farmacia-->
@@ -33,23 +38,28 @@
     <div class="loader"></div>
   </div>
 
-    <%- include ('shared/header') %> <!-- se incluye el header -->
+  <%- include ('shared/header') %>
+  <!-- se incluye el header -->
 
 
-    <!-- se incluye el contenido dependiendo de la opción del menú -->
-    <% switch(page) {
+  <!-- se incluye el contenido dependiendo de la opción del menú -->
+  <% switch(page) {
       case 1: %>
-    <%- include ('farmacia/home') %>
-    <% break
+  <%- include ('farmacia/home') %>
+  <% break
       case 2: %>
-    <%- include ('farmacia/farmacia')%>
-    <% break
+  <%- include ('farmacia/farmacia')%>
+  <% break
+      case 3: %>
+  <%- include ('farmacia/catalogo')%>
+  <% break
       default: %>
-    <%- include ('sections/404') %>
-    <% break  } %>
+  <%- include ('sections/404') %>
+  <% break  } %>
 
 
-    <%- include ('shared/footer') %> <!-- se incluye el header -->
+  <%- include ('shared/footer') %>
+  <!-- se incluye el header -->
 
 
 
