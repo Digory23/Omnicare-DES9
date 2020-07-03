@@ -59,6 +59,27 @@ app.get('/Contacto', function(req, res){
     });
 });
 
+app.get('/Compras', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:5
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+
+app.get('/Detalle-Producto', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:6
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
