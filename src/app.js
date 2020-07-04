@@ -98,6 +98,15 @@ app.get('/Checkout', function(req, res){
     });
 });
 
+app.get('/Paciente', function(req, res){
+    res.type('text/html');
+    res.render('index-paciente-doctor', {
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
 
 app.use(function(err, req, res, next){
     console.error(err.stack);

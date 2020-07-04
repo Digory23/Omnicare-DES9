@@ -1,0 +1,209 @@
+    <!-- Seccion de tablas-->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-4"><br><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../img/doctor.png" class="card-img-top picture center" alt="...">
+                        <div class="card-body">
+                            <h3 class="profile-username text-center">Alexander Pierce</h3>
+
+                            <p class="text-muted text-center">Doctor</p>
+              
+                            <ul class="list-group list-group-unbordered mb-3">
+                              <li class="list-group-item">
+                                <b>Cédula</b> <a class="float-right">8-888-8888</a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Teléfono</b> <a class="float-right">989-0987</a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Especialidad</b> <a class="float-right">Pediatría</a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Email</b> <a class="float-right">nombre@email.com</a>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+
+                    <style>
+                        .btn-dark{
+                            float: right;
+                        }
+
+                        .card-title{
+                            padding-top: 10px;
+                        }
+
+                        .bienvenida{
+                        padding-left: 50px;
+                        padding-right: 50px;
+                        text-align: justify;
+                    }
+
+                    </style>
+                    <!-- Content Header (Page header) -->
+
+                    <br><br><div class="card">
+                        <div class="card-header">
+                          <center><h3><b>¡Bienvenido(a) Dr. Alexander Pierce!</b></h3></center>
+                        </div><br><br>
+                        <!-- /.card-header -->
+                     <h5 class="bienvenida">Aquí podrá consultar sus citas pendientes, verificar su calendario para ver su disponibilidad y asignar citas. También podrá ver los detalles de las citas que le hayan solicitado con usted o si han seleccionado una especialidad en específico.
+                     </h5><br><br>
+                        <!-- /.card-body -->
+                      </div>
+
+
+
+                    <!--Futuras citas table-->
+                    <!-- /.card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Solicitudes de citas:</h3>
+                            <a href="../paciente-doctor/AgendarCita.html" class="btn btn-dark">Agendar una cita</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Nombre del paciente</th>
+                                        <th>Motivo de Cita</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Depresion aguda</td>
+                                        <td><button type="button" class="btn btn-info">Ver informacion</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Diana Garcia</td>
+                                        <td>Coronavirus</td>
+                                        <td><button type="button" class="btn btn-info">Ver informacion</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Virgilio Valentin</td>
+                                        <td>Mareos</td>
+                                        <td><button type="button" class="btn btn-info">Ver informacion</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Jahir Alexis</td>
+                                        <td>Dengue</td>
+                                        <td><button type="button" class="btn btn-info">Ver informacion</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!--Futuras citas table end-->
+                </div>
+            </div>
+
+            <!-- Registro medico-->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Citas pendientes: </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Paciente</th>
+                                        <th>Motivo de cita</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>10:30 a.m.
+                                        </td>
+                                        <td>Nathalie Acevedo</td>
+                                        <td>Solicitud de receta</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>22/6/2020</td>
+                                        <td>4:00 p.m.</td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Dolor de Cabeza</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>10:30 a.m.
+                                        </td>
+                                        <td>Nathalie Acevedo</td>
+                                        <td>Vómitos</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>11:00 a.m.
+                                        </td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Mareos</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>11:45 a.m.
+                                        </td>
+                                        <td>Diana Garcia</td>
+                                        <td>Migrañas</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>22/6/2020</td>
+                                        <td>4:00 p.m.</td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Solicitud de medicamentos</td>
+                                        <td><button type="button" class="btn btn-info">Ver cita</button></td>
+                                    </tr>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Paciente</th>
+                                        <th>Motivo de cita</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Registro medico table end -->
