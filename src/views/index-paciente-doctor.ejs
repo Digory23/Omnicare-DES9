@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ogani Template">
+  <meta name="keywords" content="Ogani, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Omnicare</title>
+
+   <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+ <!-- Google Font -->
+ <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <link rel="stylesheet" href="css/paciente-doctor-css/all.min.css">
+
+ <!-- Favicons -->
+ <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+ <link rel="manifest" href="img/favicon/site.webmanifest">
+
+ <!-- Css Styles -->
+ <link rel="stylesheet" href="css/farmacia-css/style.css" type="text/css">
+
+ <!-- DataTables -->
+ <link rel="stylesheet" href="css/paciente-doctor-css/dataTables.bootstrap4.min.css">
+ <link rel="stylesheet" href="css/paciente-doctor-css/responsive.bootstrap4.min.css">
+
+ <!-- Theme style -->
+ <link rel="stylesheet" href="css/paciente-doctor-css/adminlte.min.css">
+ <!--Custom css-->
+ <link rel="stylesheet" href="css/paciente-doctor-css/custom.css" type="text/css">
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet"
+   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+
+  <!--wrapper-->
+  <div class="wrapper">
+    <%- include ('shared/header-doc-pac') %>
+
+    <%- include ('shared/aside-doc-pac') %>
+   <!-- wrapper de contenido-->
+    <div class="content-wrapper">
+
+
+      <%- include ('paciente-doctor/paciente') %>
+
+      <%- include ('shared/footer-doc-pac') %>
+    </div>
+    <!--fin wrapper de contenido-->
+  </div>
+  <!--fin wrapper-->
+  <!-- jQuery -->
+  <script src="js/paciente-doctor-js/jquery.min.js"></script>
+
+
+  <!-- Bootstrap 4 -->
+  <script src="js/paciente-doctor-js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- DataTables -->
+  <script src="js/paciente-doctor-js/jquery.dataTables.min.js"></script>
+  <script src="js/paciente-doctor-js/dataTables.bootstrap4.min.js"></script>
+  <script src="js/paciente-doctor-js/dataTables.responsive.min.js"></script>
+  <script src="js/paciente-doctor-js/responsive.bootstrap4.min.js"></script>
+
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="js/paciente-doctor-js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="js/paciente-doctor-js/demo.js"></script>
+
+  <!--Script de las tablas-->
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+
+</body>
+
+</html>
