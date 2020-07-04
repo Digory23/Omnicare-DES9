@@ -4,13 +4,20 @@ const express = require('express'),
 const app = express();
 const path = require('path');
 
-
-
+/*
+//Conexion a la BD
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://ocAdmin:omnicare@omnicaredb.ywe51.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});*/
 
 
 // Importar rutas
 //const indexRoutes = require('./routes/index');
-
 
 //Configuracion
 app.set('port', process.env.PORT || 3000);
