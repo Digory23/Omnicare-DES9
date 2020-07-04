@@ -1,22 +1,18 @@
-//declaracion de variables
+//dependencias
 const express = require('express'),
-    ejs = require('ejs');
+ejs = require('ejs');
 const app = express();
 const path = require('path');
-
-/*
-//Conexion a la BD
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://ocAdmin:omnicare@omnicaredb.ywe51.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});*/
+const morgan = require('morgan');
+const InitiateMongoServer = require("./config/db");//Configuracion de la BD
 
 
-// Importar rutas
+// Initiate Mongo Server
+InitiateMongoServer();
+
+
+
+// Routes
 //const indexRoutes = require('./routes/index');
 
 //Configuracion
@@ -24,6 +20,12 @@ app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');//View engine que usaremos
 app.use(express.static(__dirname + '/public'));//Ubicacion de archivos publicos
 app.set('views', path.join(__dirname, 'views')); //Carpeta de las vistas
+
+
+// middlewares
+app.use(morgan('dev')); // Con morgan podemos ver los procesos en la vista de la consola.
+app.use(express.urlencoded({extended: false})) //Para interpretar los datos que vienen de un formulario y poder procesarlo
+
 
 
 app.get('/', function(req, res){
