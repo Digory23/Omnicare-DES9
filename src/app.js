@@ -39,6 +39,59 @@ app.get('/Farmacia', function(req, res){
     });
 });
 
+app.get('/Catalogo', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:3
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+app.get('/Contacto', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:4
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+app.get('/Compras', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:5
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+
+app.get('/Detalle-Producto', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:6
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+
+app.get('/Checkout', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:7
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
