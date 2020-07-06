@@ -12,15 +12,12 @@ const session = require('express-session');
 const InitiateMongoServer = require("./config/db");//Configuracion de la BD
 
 
-// Initiate Mongo Server
+//Inicializamos el servidor
 InitiateMongoServer();
 
 
-require('./config/passport')(passport);//configuracion de autenticacion y verificacion de usuario
-
-
-
 //Configuracion
+require('./config/passport')(passport);//configuracion de autenticacion y verificacion de usuario
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');//View engine que usaremos
 app.use(express.static(__dirname + '/public'));//Ubicacion de archivos publicos
@@ -39,35 +36,24 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+app.use(flash());//para enviar mensajes
 
 //Importar rutas
 const indexRoutes = require('./routes/index');
-require('./routes/paciente')(app, passport)
+require('./routes/paciente')(app, passport)//se le envia passport a las rutas para poder trabajar la autenticacion en las mismas
 
 
-
-// rutas del servidor
+// rutas del inicio
 app.use('/', indexRoutes);
 
 
-
-app.get('/Paciente', function(req, res){
-    res.type('text/html');
-    res.render('index-paciente-doctor', {
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-
+/*
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
     res.status(500);
     res.send('500 - Server Error');
-});
+});*/
 
 
 

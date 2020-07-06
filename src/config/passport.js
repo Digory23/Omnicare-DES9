@@ -1,6 +1,6 @@
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;//Indicamos el tipo de estrategia
 
-const Paciente = require('../models/paciente');
+const Paciente = require('../models/paciente');//modelo de la base de datos con el que se trabajara
 
 module.exports = function (passport) {
   // required for persistent login sessions
@@ -18,7 +18,7 @@ module.exports = function (passport) {
 
   // Signup de paciente
   passport.use('paciente-signup', new LocalStrategy({
-    // by default, local strategy uses username and password, we will override with email
+    // usernameField y passwordField son palabras reservadas
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback : true 
@@ -44,9 +44,7 @@ module.exports = function (passport) {
 //aqui termina el sign up de paciente
 
 
-  // login
-  // we are using named strategies since we have one for login and one for signup
-  // by default, if there was no name, it would just be called 'local
+  // login del paciente
   passport.use('paciente-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',

@@ -10,7 +10,7 @@ module.exports = (app, passport) => {
     });
 
 
-    //ruta donde 
+    //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
     app.post('/Login', passport.authenticate('paciente-login', {
         successRedirect: '/Perfil-Paciente',
         failureRedirect: '/Login',
@@ -27,7 +27,7 @@ module.exports = (app, passport) => {
     });
 
 
-    //ruta donde creamos un nuevo usuario
+    //ruta donde creamos un nuevo usuario (paciente-signup lo creamos en passport)
     app.post('/Registro', passport.authenticate('paciente-signup', {
         successRedirect: '/Perfil-Paciente',
         failureRedirect: '/Registro',
