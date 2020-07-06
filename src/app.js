@@ -3,7 +3,12 @@ const express = require('express'),
 ejs = require('ejs');
 const app = express();
 const path = require('path');
+const passport = require('passport');
+const flash = require('connect-flash');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const InitiateMongoServer = require("./config/db");//Configuracion de la BD
 
 
@@ -11,12 +16,7 @@ const InitiateMongoServer = require("./config/db");//Configuracion de la BD
 InitiateMongoServer();
 
 
-//Importar rutas
-const indexRoutes = require('./routes/index');
-
-
-// rutas del servidor
-app.use('/', indexRoutes);
+require('./config/passport')(passport);//configuracion de autenticacion y verificacion de usuario
 
 
 
@@ -29,7 +29,26 @@ app.set('views', path.join(__dirname, 'views')); //Carpeta de las vistas
 
 // middlewares
 app.use(morgan('dev')); // para ver los procesos de las vistas por consola
-app.use(express.urlencoded({extended: false})) //Para interpretar los datos que vienen de un formulario y poder procesarlo
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false})) //Para interpretar los datos que vienen de un formulario y poder procesarlo
+// required for passport
+app.use(session({
+	secret: 'Un secreto',
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+//Importar rutas
+const indexRoutes = require('./routes/index');
+require('./routes/paciente')(app, passport)
+
+
+
+// rutas del servidor
+app.use('/', indexRoutes);
 
 
 

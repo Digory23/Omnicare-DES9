@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 
@@ -76,6 +75,15 @@ router.get('/Checkout', function(req, res){
         res.send(html);
     });
 });
+/*
+router.get('/Paciente', function(req, res){
+    res.type('text/html');
+    res.render('paciente-doctor/login', {
+    }, function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});*/
 
 
 
