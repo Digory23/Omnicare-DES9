@@ -24,7 +24,7 @@ module.exports = function (passport) {
     passReqToCallback : true 
   },
   function (req, email, password, done) {
-    Paciente.findOne({'email_pa': email}, function (err, user) {
+    Paciente.findOne({'email_pac': email}, function (err, user) {
       if (err) {
         return done(err);
       }
@@ -53,7 +53,7 @@ module.exports = function (passport) {
     passReqToCallback: true
   },
   function (req, email, password, done) {
-    Paciente.findOne({'email_pa': email}, function (err, user) {
+    Paciente.findOne({'email_pac': email}, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, req.flash('loginMessage', 'No User found'))

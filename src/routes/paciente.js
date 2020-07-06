@@ -1,13 +1,21 @@
 module.exports = (app, passport) => {
 
 
-    // signup view
+    //login view
     app.get('/Login', (req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/login', {
             message: req.flash('loginMessage')
         });
     });
+
+
+    //ruta donde 
+    app.post('/Login', passport.authenticate('paciente-login', {
+        successRedirect: '/Perfil-Paciente',
+        failureRedirect: '/Login',
+        failureFlash: true // allow flash messages
+    }));
 
 
     // signup view
@@ -34,6 +42,12 @@ module.exports = (app, passport) => {
         });
     });
 
+    // logout
+	app.get('/Logout', (req, res) => {
+		req.logout();
+		res.redirect('/Login');
+	});
+
 };
 
 function isLoggedIn(req, res, next) {
@@ -41,5 +55,5 @@ function isLoggedIn(req, res, next) {
         return next();
     }
 
-    res.redirect('/');
+    res.redirect('/Login');
 }
