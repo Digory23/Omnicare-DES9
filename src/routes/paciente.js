@@ -1,10 +1,26 @@
 module.exports = (app, passport) => {
 
 
-    //login view
+    //login select view
     app.get('/Login', (req, res) => {
         res.type('text/html');
+        res.render('paciente-doctor/login-select', {
+            message: req.flash('loginMessage')
+        });
+    });
+
+    //login paciente view
+    app.get('/Login-paciente', (req, res) => {
+        res.type('text/html');
         res.render('paciente-doctor/login', {
+            message: req.flash('loginMessage')
+        });
+    });
+
+    //login doctor view
+    app.get('/Login-doctor', (req, res) => {
+        res.type('text/html');
+        res.render('paciente-doctor/login-doctor', {
             message: req.flash('loginMessage')
         });
     });
