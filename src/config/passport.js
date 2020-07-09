@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;//Indicamos el tipo de estrategia
 
 const Paciente = require('../models/paciente');//modelo de la base de datos con el que se trabajara
+const Cliente = require('../models/cliente-paciente');
 
 module.exports = function (passport) {
   // required for persistent login sessions
@@ -11,7 +12,7 @@ module.exports = function (passport) {
 
   // used to deserialize user
   passport.deserializeUser(function (id, done) {
-    Paciente.findById(id, function (err, user) {
+    Cliente.findById(id, function (err, user) {
       done(err, user);
     });
   });
@@ -62,4 +63,33 @@ module.exports = function (passport) {
       return done(null, user);
     });
   }));
+
+
+
+
+
+  // login del cliente
+  passport.use('cliente-login', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },
+  function (req, email, password, done) {
+    Cliente.findOne({'email_cli': email}, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, req.flash('loginMessage', 'No User found'))
+      }
+      /*if(!user.validCli()){
+        return done(null, false, req.flash('loginMessage', 'No es paciente'));
+      }*/
+      if (!user.validPassword(password)) {
+        return done(null, false, req.flash('loginMessage', 'Wrong. password'));
+      }
+      return done(null, user);
+    });
+  }));
 }
+
+
+

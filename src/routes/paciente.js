@@ -27,9 +27,10 @@ module.exports = (app, passport) => {
 
 
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
-    app.post('/Login', passport.authenticate('paciente-login', {
+    app.post('/Login', passport.authenticate('cliente-login', {
+
         successRedirect: '/Perfil-Paciente',
-        failureRedirect: '/Login',
+        failureRedirect: '/Login-paciente',
         failureFlash: true // allow flash messages
     }));
 
@@ -52,24 +53,32 @@ module.exports = (app, passport) => {
 
 
     //profile view
-    app.get('/Perfil-Paciente', isLoggedIn, (req, res) => {
+    app.get('/Perfil-Paciente', isLoggedIn, IsPaciente, (req, res) => {
         res.render('index-paciente-doctor', {
             user: req.user
         });
     });
 
     // logout
-	app.get('/Logout', (req, res) => {
-		req.logout();
-		res.redirect('/Login');
-	});
+    app.get('/Logout', (req, res) => {
+        req.logout();
+        res.redirect('/Login');
+    });
 
 };
+
+
+function IsPaciente(req, res, next) {
+    if (req.user.paciente) {
+        return next();
+    }
+    res.redirect('/Login');
+}
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
 
-    res.redirect('/Login');
+    res.redirect('/Login-paciente');
 }
