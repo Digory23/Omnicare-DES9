@@ -33,7 +33,7 @@ module.exports = function (passport) {
       } else {
         var newPaciente = new Paciente();
         newPaciente.email_pac = email;
-        newPaciente.pass_pac = password;
+        newPaciente.pass_pac = newPaciente.generateHash(password);
         newPaciente.save(function (err) {
           if (err) { throw err; }
           return done(null, newPaciente);
