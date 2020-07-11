@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-
+    nombre_cli: String,
     email_cli: String,
     pass_cli: String,
+    tipo_user: String,
     paciente: Boolean,
     datos_paciente:{
         tipo_sangre: String
