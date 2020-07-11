@@ -40,8 +40,8 @@ app.use(flash());//para enviar mensajes
 
 //Importar rutas
 const indexRoutes = require('./routes/index');
-require('./routes/paciente')(app, passport)//se le envia passport a las rutas para poder trabajar la autenticacion en las mismas
-
+require('./routes/clinica')(app, passport)//se le envia passport a las rutas para poder trabajar la autenticacion en las mismas
+//require('./routes/cliente')(app, passport)
 
 // rutas del inicio
 app.use('/', indexRoutes);

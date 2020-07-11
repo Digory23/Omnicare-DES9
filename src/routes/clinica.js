@@ -1,34 +1,18 @@
 module.exports = (app, passport) => {
 
 
-    //login select view
+    //login
     app.get('/Login', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/login-select', {
-            message: req.flash('loginMessage')
-        });
-    });
-
-    //login paciente view
-    app.get('/Login-paciente', (req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/login', {
             message: req.flash('loginMessage')
         });
     });
 
-    //login doctor view
-    app.get('/Login-doctor', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/login-doctor', {
-            message: req.flash('loginMessage')
-        });
-    });
-
-
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
-    app.post('/Login', passport.authenticate('paciente-login', {
-        successRedirect: '/Perfil-Paciente',
+    app.post('/Login', passport.authenticate('cliente-login', {
+
+        successRedirect: '/',
         failureRedirect: '/Login',
         failureFlash: true // allow flash messages
     }));
@@ -52,24 +36,32 @@ module.exports = (app, passport) => {
 
 
     //profile view
-    app.get('/Perfil-Paciente', isLoggedIn, (req, res) => {
+    app.get('/Perfil-Paciente', isLoggedIn, IsPaciente, (req, res) => {
         res.render('index-paciente-doctor', {
             user: req.user
         });
     });
 
     // logout
-	app.get('/Logout', (req, res) => {
-		req.logout();
-		res.redirect('/Login');
-	});
+    app.get('/Logout', (req, res) => {
+        req.logout();
+        res.redirect('/Login');
+    });
 
 };
+
+
+function IsPaciente(req, res, next) {
+    if (req.user.paciente) {
+        return next();
+    }
+    res.redirect('/');
+}
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-
     res.redirect('/Login');
 }

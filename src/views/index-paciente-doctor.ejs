@@ -9,53 +9,74 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Omnicare</title>
 
-   <!--Bootstrap-->
+  <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
- <!-- Google Font -->
- <link rel="stylesheet"
-   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
- <link rel="stylesheet" href="css/paciente-doctor-css/all.min.css">
+  <!-- Google Font -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="css/paciente-doctor-css/all.min.css">
 
- <!-- Favicons -->
- <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
- <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
- <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
- <link rel="manifest" href="img/favicon/site.webmanifest">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/site.webmanifest">
 
- <!-- Css Styles -->
- <link rel="stylesheet" href="css/farmacia-css/style.css" type="text/css">
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/farmacia-css/style.css" type="text/css">
 
- <!-- DataTables -->
- <link rel="stylesheet" href="css/paciente-doctor-css/dataTables.bootstrap4.min.css">
- <link rel="stylesheet" href="css/paciente-doctor-css/responsive.bootstrap4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="css/paciente-doctor-css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="css/paciente-doctor-css/responsive.bootstrap4.min.css">
 
- <!-- Theme style -->
- <link rel="stylesheet" href="css/paciente-doctor-css/adminlte.min.css">
- <!--Custom css-->
- <link rel="stylesheet" href="css/paciente-doctor-css/custom.css" type="text/css">
- <!-- Google Font: Source Sans Pro -->
- <link rel="stylesheet"
-   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
- <!-- Font Awesome -->
- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/paciente-doctor-css/adminlte.min.css">
+  <!--Custom css-->
+  <link rel="stylesheet" href="css/paciente-doctor-css/custom.css" type="text/css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini">
 
   <!--wrapper-->
   <div class="wrapper">
     <%- include ('shared/header-doc-pac') %>
 
+    
+<!--Switch para controlar el aside-->
+    <% switch(user.tipo_user) {
+      case "1": %>
     <%- include ('shared/aside-pac') %>
+    <% break
+      case "2": %>
+    <%- include ('shared/aside-doc')%>
+    <% break
+      default: %>
+    <%- include ('farmacia/404') %>
+    <% break  } %>
 
-  
 
-   <!-- wrapper de contenido-->
+    <!-- wrapper de contenido-->
     <div class="content-wrapper">
 
 
-      <%- include ('paciente-doctor/citas-pendientes') %>
+      <% switch(user.tipo_user) {
+        case "1": %>
+        <%- include ('paciente-doctor/paciente') %>
+      <% break
+        case "2": %>
+        <%- include ('paciente-doctor/doctor') %>
+      <% break
+        default: %>
+      <%- include ('farmacia/404') %>
+      <% break  } %>
+
 
       <%- include ('shared/footer-doc-pac') %>
     </div>
@@ -107,167 +128,167 @@
     });
   </script>
 
-<script>
-  $(function () {
+  <script>
+    $(function () {
 
-    /* initialize the external events
-     -----------------------------------------------------------------*/
-    function ini_events(ele) {
-      ele.each(function () {
+      /* initialize the external events
+       -----------------------------------------------------------------*/
+      function ini_events(ele) {
+        ele.each(function () {
 
-        // create an Event Object (https://fullcalendar.io/docs/event-object)
-        // it doesn't need to have a start or end
-        var eventObject = {
-          title: $.trim($(this).text()) // use the element's text as the event title
-        }
+          // create an Event Object (https://fullcalendar.io/docs/event-object)
+          // it doesn't need to have a start or end
+          var eventObject = {
+            title: $.trim($(this).text()) // use the element's text as the event title
+          }
 
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject)
+          // store the Event Object in the DOM element so we can get to it later
+          $(this).data('eventObject', eventObject)
 
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-          zIndex        : 1070,
-          revert        : true, // will cause the event to go back to its
-          revertDuration: 0  //  original position after the drag
+          // make the event draggable using jQuery UI
+          $(this).draggable({
+            zIndex: 1070,
+            revert: true, // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+          })
+
         })
+      }
 
+      ini_events($('#external-events div.external-event'))
+
+      /* initialize the calendar
+       -----------------------------------------------------------------*/
+      //Date for the calendar events (dummy data)
+      var date = new Date()
+      var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear()
+
+      var Calendar = FullCalendar.Calendar;
+      var Draggable = FullCalendarInteraction.Draggable;
+
+      var containerEl = document.getElementById('external-events');
+      var checkbox = document.getElementById('drop-remove');
+      var calendarEl = document.getElementById('calendar');
+
+      // initialize the external events
+      // -----------------------------------------------------------------
+
+      new Draggable(containerEl, {
+        itemSelector: '.external-event',
+        eventData: function (eventEl) {
+          console.log(eventEl);
+          return {
+            title: eventEl.innerText,
+            backgroundColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+            borderColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+            textColor: window.getComputedStyle(eventEl, null).getPropertyValue('color'),
+          };
+        }
+      });
+
+      var calendar = new Calendar(calendarEl, {
+        plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid'],
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        'themeSystem': 'bootstrap',
+        //Random default events
+        events: [
+          {
+            title: 'Cita a las 11:00 a',
+            start: new Date(y, m, 1),
+            backgroundColor: '#f56954', //red
+            borderColor: '#f56954', //red
+            allDay: true
+          },
+          {
+            title: 'Conferencia Virtual',
+            start: new Date(y, m, d - 5),
+            end: new Date(y, m, d - 2),
+            backgroundColor: '#f39c12', //yellow
+            borderColor: '#f39c12' //yellow
+          },
+          {
+            title: 'Reunión',
+            start: new Date(y, m, d, 10, 30),
+            allDay: false,
+            backgroundColor: '#0073b7', //Blue
+            borderColor: '#0073b7' //Blue
+          },
+          {
+            title: 'Cita',
+            start: new Date(y, m, d, 12, 0),
+            end: new Date(y, m, d, 14, 0),
+            allDay: false,
+            backgroundColor: '#00c0ef', //Info (aqua)
+            borderColor: '#00c0ef' //Info (aqua)
+          },
+          {
+            title: 'Cita',
+            start: new Date(y, m, d + 1, 19, 0),
+            end: new Date(y, m, d + 1, 22, 30),
+            allDay: false,
+            backgroundColor: '#00a65a', //Success (green)
+            borderColor: '#00a65a' //Success (green)
+          }
+        ],
+        editable: true,
+        droppable: true, // this allows things to be dropped onto the calendar !!!
+        drop: function (info) {
+          // is the "remove after drop" checkbox checked?
+          if (checkbox.checked) {
+            // if so, remove the element from the "Draggable Events" list
+            info.draggedEl.parentNode.removeChild(info.draggedEl);
+          }
+        }
+      });
+
+      calendar.render();
+      // $('#calendar').fullCalendar()
+
+      /* ADDING EVENTS */
+      var currColor = '#3c8dbc' //Red by default
+      //Color chooser button
+      $('#color-chooser > li > a').click(function (e) {
+        e.preventDefault()
+        //Save color
+        currColor = $(this).css('color')
+        //Add color effect to button
+        $('#add-new-event').css({
+          'background-color': currColor,
+          'border-color': currColor
+        })
       })
-    }
-
-    ini_events($('#external-events div.external-event'))
-
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-    //Date for the calendar events (dummy data)
-    var date = new Date()
-    var d    = date.getDate(),
-        m    = date.getMonth(),
-        y    = date.getFullYear()
-
-    var Calendar = FullCalendar.Calendar;
-    var Draggable = FullCalendarInteraction.Draggable;
-
-    var containerEl = document.getElementById('external-events');
-    var checkbox = document.getElementById('drop-remove');
-    var calendarEl = document.getElementById('calendar');
-
-    // initialize the external events
-    // -----------------------------------------------------------------
-
-    new Draggable(containerEl, {
-      itemSelector: '.external-event',
-      eventData: function(eventEl) {
-        console.log(eventEl);
-        return {
-          title: eventEl.innerText,
-          backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
-        };
-      }
-    });
-
-    var calendar = new Calendar(calendarEl, {
-      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-      header    : {
-        left  : 'prev,next today',
-        center: 'title',
-        right : 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      'themeSystem': 'bootstrap',
-      //Random default events
-      events    : [
-        {
-          title          : 'Cita a las 11:00 a',
-          start          : new Date(y, m, 1),
-          backgroundColor: '#f56954', //red
-          borderColor    : '#f56954', //red
-          allDay         : true
-        },
-        {
-          title          : 'Conferencia Virtual',
-          start          : new Date(y, m, d - 5),
-          end            : new Date(y, m, d - 2),
-          backgroundColor: '#f39c12', //yellow
-          borderColor    : '#f39c12' //yellow
-        },
-        {
-          title          : 'Reunión',
-          start          : new Date(y, m, d, 10, 30),
-          allDay         : false,
-          backgroundColor: '#0073b7', //Blue
-          borderColor    : '#0073b7' //Blue
-        },
-        {
-          title          : 'Cita',
-          start          : new Date(y, m, d, 12, 0),
-          end            : new Date(y, m, d, 14, 0),
-          allDay         : false,
-          backgroundColor: '#00c0ef', //Info (aqua)
-          borderColor    : '#00c0ef' //Info (aqua)
-        },
-        {
-          title          : 'Cita',
-          start          : new Date(y, m, d + 1, 19, 0),
-          end            : new Date(y, m, d + 1, 22, 30),
-          allDay         : false,
-          backgroundColor: '#00a65a', //Success (green)
-          borderColor    : '#00a65a' //Success (green)
+      $('#add-new-event').click(function (e) {
+        e.preventDefault()
+        //Get value and make sure it is not null
+        var val = $('#new-event').val()
+        if (val.length == 0) {
+          return
         }
-      ],
-      editable  : true,
-      droppable : true, // this allows things to be dropped onto the calendar !!!
-      drop      : function(info) {
-        // is the "remove after drop" checkbox checked?
-        if (checkbox.checked) {
-          // if so, remove the element from the "Draggable Events" list
-          info.draggedEl.parentNode.removeChild(info.draggedEl);
-        }
-      }
-    });
 
-    calendar.render();
-    // $('#calendar').fullCalendar()
+        //Create events
+        var event = $('<div />')
+        event.css({
+          'background-color': currColor,
+          'border-color': currColor,
+          'color': '#fff'
+        }).addClass('external-event')
+        event.html(val)
+        $('#external-events').prepend(event)
 
-    /* ADDING EVENTS */
-    var currColor = '#3c8dbc' //Red by default
-    //Color chooser button
-    $('#color-chooser > li > a').click(function (e) {
-      e.preventDefault()
-      //Save color
-      currColor = $(this).css('color')
-      //Add color effect to button
-      $('#add-new-event').css({
-        'background-color': currColor,
-        'border-color'    : currColor
+        //Add draggable funtionality
+        ini_events(event)
+
+        //Remove event from text input
+        $('#new-event').val('')
       })
     })
-    $('#add-new-event').click(function (e) {
-      e.preventDefault()
-      //Get value and make sure it is not null
-      var val = $('#new-event').val()
-      if (val.length == 0) {
-        return
-      }
-
-      //Create events
-      var event = $('<div />')
-      event.css({
-        'background-color': currColor,
-        'border-color'    : currColor,
-        'color'           : '#fff'
-      }).addClass('external-event')
-      event.html(val)
-      $('#external-events').prepend(event)
-
-      //Add draggable funtionality
-      ini_events(event)
-
-      //Remove event from text input
-      $('#new-event').val('')
-    })
-  })
-</script>
+  </script>
 
 </body>
 
