@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new mongoose.Schema({
     nombre_cli: String,
@@ -11,14 +12,15 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// para verificar si la contraseña es valida
-userSchema.methods.validPassword = function (password) {
-    return (password, this.pass_cli);
+userSchema.methods.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   };
 
-  userSchema.methods.validCli = function(){
-      
-      return (this.paciente)
-  }
+// para verificar si la contraseña es valida
+userSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.pass_cli);
+  };
+
+  
 
 module.exports = mongoose.model('clientes', userSchema);

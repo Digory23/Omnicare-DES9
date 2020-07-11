@@ -17,27 +17,29 @@ module.exports = function (passport) {
     });
   });
 
+
+
   // Signup de paciente
-  passport.use('paciente-signup', new LocalStrategy({
+  passport.use('cliente-signup', new LocalStrategy({
     // usernameField y passwordField son palabras reservadas
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback : true 
   },
   function (req, email, password, done) {
-    Paciente.findOne({'email_pac': email}, function (err, user) {
+    Cliente.findOne({'email_cli': email}, function (err, user) {
       if (err) {
         return done(err);
       }
       if (user) {
         return done(null, false, req.flash('signupMessage', 'the email is already taken'));
       } else {
-        var newPaciente = new Paciente();
-        newPaciente.email_pac = email;
-        newPaciente.pass_pac = newPaciente.generateHash(password);
-        newPaciente.save(function (err) {
+        var newCliente = new Cliente();
+        newCliente.email_cli = email;
+        newCliente.pass_cli = newCliente.generateHash(password);
+        newCliente.save(function (err) {
           if (err) { throw err; }
-          return done(null, newPaciente);
+          return done(null, newCliente);
         });
       }
     });
@@ -45,27 +47,7 @@ module.exports = function (passport) {
 //aqui termina el sign up de paciente
 
 
-  // login del paciente
-  passport.use('paciente-login', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-  },
-  function (req, email, password, done) {
-    Paciente.findOne({'email_pac': email}, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, req.flash('loginMessage', 'No User found'))
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, req.flash('loginMessage', 'Wrong. password'));
-      }
-      return done(null, user);
-    });
-  }));
-
-
-
+ 
 
 
   // login del cliente

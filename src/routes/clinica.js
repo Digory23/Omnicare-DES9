@@ -28,15 +28,15 @@ module.exports = (app, passport) => {
 
 
     //ruta donde creamos un nuevo usuario (paciente-signup lo creamos en passport)
-    app.post('/Registro', passport.authenticate('paciente-signup', {
-        successRedirect: '/Perfil-Paciente',
+    app.post('/Registro', passport.authenticate('cliente-signup', {
+        successRedirect: '/',
         failureRedirect: '/Registro',
         failureFlash: true // allow flash messages
     }));
 
 
     //profile view
-    app.get('/Perfil-Paciente', isLoggedIn, IsPaciente, (req, res) => {
+    app.get('/Perfil', isLoggedIn, IsPaciente, (req, res) => {
         res.render('index-paciente-doctor', {
             user: req.user
         });
