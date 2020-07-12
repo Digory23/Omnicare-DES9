@@ -1,0 +1,12 @@
+.picture{
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 20px;
+  }

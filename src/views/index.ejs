@@ -1,6 +1,93 @@
-<html>
-    
-    <h1>HOLA</h1>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ogani Template">
+  <meta name="keywords" content="Ogani, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Omnicare</title>
+
+  <!--Links necesarios para farmacia-->
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/site.webmanifest">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/farmacia-css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/jquery-ui.min.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/farmacia-css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <%- include ('shared/header') %>
+  <!-- se incluye el header -->
+
+
+  <!-- se incluye el contenido dependiendo de la opción del menú -->
+  <% switch(page) {
+      case 1: %>
+  <%- include ('farmacia/home') %>
+  <% break
+      case 2: %>
+  <%- include ('farmacia/farmacia')%>
+  <% break
+      case 3: %>
+  <%- include ('farmacia/catalogo')%>
+  <% break
+      case 4: %>
+  <%- include ('farmacia/contacto')%>
+  <% break
+      case 5: %>
+  <%- include ('farmacia/compras')%>
+  <% break
+      case 6: %>
+  <%- include ('farmacia/detalle-producto')%>
+  <% break
+      case 7: %>
+  <%- include ('farmacia/checkout')%>
+  <% break
+      default: %>
+  <%- include ('farmacia/404') %>
+  <% break  } %>
+
+
+  <%- include ('shared/footer') %>
+  <!-- se incluye el header -->
+
+
+
+  <!--JS de farmacia-->
+
+  <!-- Js Plugins -->
+  <script src="js/farmacia-js/jquery-3.3.1.min.js"></script>
+  <script src="js/farmacia-js/bootstrap.min.js"></script>
+  <script src="js/farmacia-js/jquery.nice-select.min.js"></script>
+  <script src="js/farmacia-js/jquery-ui.min.js"></script>
+  <script src="js/farmacia-js/jquery.slicknav.js"></script>
+  <script src="js/farmacia-js/mixitup.min.js"></script>
+  <script src="js/farmacia-js/owl.carousel.min.js"></script>
+  <script src="js/farmacia-js/main.js"></script>
+
+
+</body>
 
 </html>
-

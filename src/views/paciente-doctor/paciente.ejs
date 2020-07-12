@@ -1,0 +1,278 @@
+
+    <!-- Seccion de tablas-->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-4"><br><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="img/patient1.png" class="card-img-top picture center" alt="...">
+                        <div class="card-body">
+                            <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+                            <p class="text-muted text-center">Paciente</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Cédula</b> <a class="float-right">8-888-8888</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Teléfono</b> <a class="float-right">111-1111</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Sexo</b> <a class="float-right">Femenino</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Tipo de Sangre</b> <a class="float-right">O+</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Email</b> <a class="float-right">nombre@email.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+
+                    <style>
+                        .btn-dark {
+                            float: right;
+                        }
+
+                        .btn-light {
+                            float: right;
+                            color: white;
+                            background-color: grey;
+                            margin-right: 8px;
+                        }
+
+                        .card-title {
+                            padding-top: 10px;
+                        }
+
+                        .bienvenida {
+                            padding-left: 50px;
+                            padding-right: 50px;
+                            text-align: justify;
+                        }
+                    </style>
+                    <!-- Content Header (Page header) -->
+
+                    <br><br>
+                    <div class="card">
+                        <div class="card-header">
+                           
+                                <h3><b>¡Bienvenido(a) Nina Mcintire!</b></h3>
+                            
+                        </div><br>
+                        <!-- /.card-header -->
+                        <img src="img/welcome.png" alt="hora" width="200" height="200"
+                            class="center"><br>
+                        <h5 class="bienvenida">Aquí podrás consultar tus citas, verificar el estado en que se encuentran
+                            y
+                            solicitarlas. También podrás ver los detalles de las citas que tengan estado como ASIGNADAS,
+                            donde se
+                            desplegará el nombre del doctor, su especialidad y tu motivo de cita.
+                            <br><br>Próximamente podrás modificar tus datos desde nuestra página, agregar más detalles a
+                            tu
+                            expediente para facilitar tu experiencia. ¡Trabajamos en ello!
+                        </h5><br><br>
+                        <!-- /.card-body -->
+                    </div>
+
+
+
+                    <!--Futuras citas table-->
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+            <!-- Modal-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Proporcione los datos de la solicitud</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form>
+                                <!-- select -->
+                                <div class="form-group">
+                                    <label>Departamentos:</label>
+                                    <select class="form-control">
+                                        <option hidden>Seleccione</option>
+                                        <option>Odontología</option>
+                                        <option>Medicina General</option>
+                                        <option>Dermatología</option>
+                                        <option>Neurología</option>
+                                        <option>Cardiología</option>
+                                    </select>
+                                </div>
+
+                                <!-- select -->
+                                <div class="form-group">
+                                    <label>Doctores disponibles:</label>
+                                    <select class="form-control">
+                                        <option hidden>Seleccione</option>
+                                        <option>Diana García</option>
+                                        <option>Virgilio Valentín</option>
+                                        <option>Daniel Díaz</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Motivo de la Cita:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                                href="#exampleModal2">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin Modal-->
+
+            <!--modal 2-->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¡Solicitud de cita enviada exitosamente!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>Su solicitud será recibida por el médico que ha escogido. En unos días le llegará la
+                                confirmación
+                                de la cita a su correo, en él encontrará el día y hora establecidos según la
+                                disponibilidad del
+                                doctor. <br>¡Muchas gracias por preferir Omnicare!</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--fin modal 2-->
+
+
+            <br><br>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Registro Medico</h3>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"
+                                data-whatever="@getbootstrap">Solicitar una cita</button>
+                            <a href="../paciente-doctor/MostrarCitas.html" class="btn btn-light">Ver citas
+                                solicitadas</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Doctor</th>
+                                        <th>Motivo de cita</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>10:30 a.m.
+                                        </td>
+                                        <td>Nathalie Acevedo</td>
+                                        <td>Dolor de cabeza</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>10:30 a.m.
+                                        </td>
+                                        <td>Nathalie Acevedo</td>
+                                        <td>Vómitos</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>11:00 a.m.
+                                        </td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Mareos</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>11:45 a.m.
+                                        </td>
+                                        <td>Diana Garcia</td>
+                                        <td>Migrañas</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>23/5/2020</td>
+                                        <td>2:00 p.m.</td>
+                                        <td>Diana Garcia</td>
+                                        <td>Solicitud de medicamentos</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/6/2020</td>
+                                        <td>4:00 p.m.</td>
+                                        <td>Daniel Diaz</td>
+                                        <td>Solicitud de receta</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>22/5/2020</td>
+                                        <td>10:30 a.m.
+                                        </td>
+                                        <td>Nathalie Acevedo</td>
+                                        <td>Mareos</td>
+                                        <td><button type="button" class="btn btn-info">Ver diagnostico</button></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Doctor</th>
+                                        <th>Razon de cita</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
