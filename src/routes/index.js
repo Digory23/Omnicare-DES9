@@ -32,7 +32,7 @@ router.get('/Contacto', function(req, res){
     });
 });
 
-router.get('/Compras', function(req, res){
+router.get('/Compras', isLoggedIn, function(req, res){
     res.type('text/html');
     res.render('index', {
         page:5
@@ -69,3 +69,10 @@ router.get('/Paciente', function(req, res){
 
 
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/Login');
+}
