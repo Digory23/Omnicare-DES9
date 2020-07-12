@@ -89,13 +89,13 @@
                                 <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
                                 <div class="checkout__order__total">Total <span>$750.99</span></div>
                                 <p class="p1">Método de Pago</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
+
+                                        <div class="checkout__input__checkbox">
+                                        <div id="paypal-button-container"></div></div>
+                                        
+                                        <script src="https://www.paypal.com/sdk/js?client-id=AUa334wq1DxbXIy866G-Gv7goUbLhvwA12j-_bi8Pxuw0KcKNde6IMjDyYHcUGzWtol7IKyW53DlzUEf"></script>
+                                        <script>paypal.Buttons().render('#paypal-button-container');</script>
+
                                 <button type="submit" class="site-btn">Confirmar</button>
                             </div>
                         </div>
@@ -104,4 +104,16 @@
             </div>
         </div>
     </section>
+
     <!-- Checkout Section End -->
+    <!--cliente id
+    AUa334wq1DxbXIy866G-Gv7goUbLhvwA12j-_bi8Pxuw0KcKNde6IMjDyYHcUGzWtol7IKyW53DlzUEf
+
+    correo: sb-tcvfb258422@personal.example.com
+    Contraseña generada por el sistema: ID_23h-A
+
+
+    cuenta para pagar en la pagina 
+    correo electrónico: sb-mrjzl218965@business.example.com
+    Contraseña generada por el sistema: rhEge8$2
+-->

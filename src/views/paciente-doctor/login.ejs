@@ -1,0 +1,102 @@
+ <!-- Favicons -->
+ <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+ <link rel="manifest" href="../img/favicon/site.webmanifest">
+
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+ <!-- Ionicons -->
+ <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ <!-- icheck bootstrap -->
+ <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="../css/paciente-doctor-css/adminlte.min.css">
+ <!-- Google Font: Source Sans Pro -->
+ <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+ <body class="hold-transition login-page" style="background-image: url(../img/loginback.jpg); background-size: cover;"></body>
+
+<div class="login-box">
+    <!-- <div class="login-logo">
+      <img src="../../dist/img/logo.png">
+    </div> -->
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <div class="login-logo">
+          <img src="img/logo.png" width="200px">
+        </div>
+        <p class="login-box-msg">Inicia sesión para disfrutar de Omnicare</p>
+        <% if (message.length > 0) { %>
+          <div class="alert alert-danger">
+            <%= message %>
+          </div>
+        <% } %>
+        <form action="/Login" method="post">
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" name= "email" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 ">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Recordar mis datos
+                </label>
+              </div>
+            </div>
+            
+            <!-- /.col -->
+            
+            <!-- /.col -->
+          </div>
+          <div class="row">
+            <div class="col-12 mt-3 mb-3">
+              <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </div>
+          </div>
+        </form>
+  
+        <!-- <div class="social-auth-links text-center mb-3">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
+        </div> -->
+        <!-- /.social-auth-links -->
+  
+        <p class="mb-1">
+          <a href="forgot-password.html">Olvidé mi contraseña</a>
+        </p>
+        <p class="mb-0">
+          <a href="Registro" class="text-center">Crear una nueva cuenta</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+
+  <!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../js/paciente-doctor-js/adminlte.min.js"></script>

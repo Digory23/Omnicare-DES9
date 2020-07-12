@@ -417,6 +417,7 @@ ol {
 
 .header__menu {
 	padding: 8px;
+	margin-left: 31%;
 }
 
 .header__menu ul li {
@@ -799,7 +800,8 @@ ol {
 }
 
 .categories__slider .col-lg-3 {
-	max-width: 100%;
+max-width: 100%;
+
 }
 
 .categories__slider.owl-carousel .owl-nav button {
@@ -1276,7 +1278,9 @@ ol {
 
 .product__discount {
 	padding-bottom: 50px;
+
 }
+
 
 .product__discount__title {
 	text-align: left;
@@ -2155,6 +2159,8 @@ ol {
 .checkout__input__checkbox {
 	margin-bottom: 10px;
 }
+
+
 
 .checkout__input__checkbox label {
 	position: relative;

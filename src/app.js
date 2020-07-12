@@ -1,112 +1,59 @@
-//declaracion de variables
+//dependencias
 const express = require('express'),
-    ejs = require('ejs');
+ejs = require('ejs');
 const app = express();
 const path = require('path');
+const passport = require('passport');
+const flash = require('connect-flash');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const InitiateMongoServer = require("./config/db");//Configuracion de la BD
 
 
-
-
-
-// Importar rutas
-//const indexRoutes = require('./routes/index');
+//Inicializamos el servidor
+InitiateMongoServer();
 
 
 //Configuracion
+require('./config/passport')(passport);//configuracion de autenticacion y verificacion de usuario
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');//View engine que usaremos
 app.use(express.static(__dirname + '/public'));//Ubicacion de archivos publicos
 app.set('views', path.join(__dirname, 'views')); //Carpeta de las vistas
 
 
-app.get('/', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:1
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
+// middlewares
+app.use(morgan('dev')); // para ver los procesos de las vistas por consola
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false})) //Para interpretar los datos que vienen de un formulario y poder procesarlo
+// required for passport
+app.use(session({
+	secret: 'Un secreto',
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());//para enviar mensajes
 
-app.get('/Farmacia', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:2
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
+//Importar rutas
+const indexRoutes = require('./routes/index');
+require('./routes/clinica')(app, passport)//se le envia passport a las rutas para poder trabajar la autenticacion en las mismas
+//require('./routes/cliente')(app, passport)
 
-app.get('/Catalogo', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:3
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-app.get('/Contacto', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:4
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-app.get('/Compras', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:5
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
+// rutas del inicio
+app.use('/', indexRoutes);
 
 
-app.get('/Detalle-Producto', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:6
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-
-app.get('/Checkout', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        page:7
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-app.get('/Paciente', function(req, res){
-    res.type('text/html');
-    res.render('index-paciente-doctor', {
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
-
+/*
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.type('text/plain');
     res.status(500);
     res.send('500 - Server Error');
-});
+});*/
 
 
 
