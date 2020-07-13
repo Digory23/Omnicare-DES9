@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="modal-body">
-                            <form>
+                            <form action="/Solicitud" method="post">
                                 <!-- select -->
                                 <div class="form-group">
                                     <label>Departamentos:</label>
@@ -118,7 +118,7 @@
                                 <!-- select -->
                                 <div class="form-group">
                                     <label>Doctores disponibles:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="doctor">
                                         <option hidden>Seleccione</option>
                                         <option>Diana García</option>
                                         <option>Virgilio Valentín</option>
@@ -128,7 +128,7 @@
 
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Motivo de la Cita:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea class="form-control" id="message-text" name="motivo"></textarea>
                                 </div>
                             </form>
                         </div>
