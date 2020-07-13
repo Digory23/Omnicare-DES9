@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
         cedula: String,
         telefono: String,
         sexo: String
+    },
+    datos_doctor:{
+      cedula: String,
+      telefono: String,
+      sexo: String,
+      especialidad: String
     }
 });
 

@@ -1,14 +1,20 @@
-const express = require('express');
-const router = express.Router();
+module.exports = (app) => { 
 
 
-router.post('/Solicitud', function(req, res){
+app.get('/AgendarCita', function(req, res){
     res.type('text/html');
-    res.render('index', {
-        user: "3"
+    res.render('index-paciente-doctor', {
+        tipo_usuario: "3",
+        user: req.user
     });
 });
 
+app.get('/CitasPendientes', function(req, res){
+    res.type('text/html');
+    res.render('index-paciente-doctor', {
+        tipo_usuario: "4",
+        user: req.user
+    });
+});
 
-
-module.exports = router;
+}
