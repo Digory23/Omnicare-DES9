@@ -7,22 +7,25 @@
                     <div class="card" style="width: 18rem;">
                         <img src="../img/doctor.png" class="card-img-top picture center" alt="...">
                         <div class="card-body">
-                            <h3 class="profile-username text-center">Alexander Pierce</h3>
+                            <h3 class="profile-username text-center"><%= user.nombre_user %></h3>
 
                             <p class="text-muted text-center">Doctor</p>
               
                             <ul class="list-group list-group-unbordered mb-3">
                               <li class="list-group-item">
-                                <b>Cédula</b> <a class="float-right">8-888-8888</a>
+                                <b>Cédula</b> <a class="float-right"><%= user.datos_doctor.cedula %></a>
                               </li>
                               <li class="list-group-item">
-                                <b>Teléfono</b> <a class="float-right">989-0987</a>
+                                <b>Teléfono</b> <a class="float-right"><%= user.datos_doctor.telefono %></a>
                               </li>
                               <li class="list-group-item">
-                                <b>Especialidad</b> <a class="float-right">Pediatría</a>
+                                <b>Especialidad</b> <a class="float-right"><%= user.datos_doctor.especialidad %></a>
                               </li>
                               <li class="list-group-item">
-                                <b>Email</b> <a class="float-right">nombre@email.com</a>
+                                <b>Sexo</b> <a class="float-right"><%= user.datos_doctor.sexo %></a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Email</b> <a class="float-right"><%= user.email_user %></a>
                               </li>
                             </ul>
                         </div>
@@ -50,7 +53,7 @@
 
                     <br><br><div class="card">
                         <div class="card-header">
-                          <center><h3><b>¡Bienvenido(a) Dr. Alexander Pierce!</b></h3></center>
+                          <center><h3><b>¡Bienvenido(a) <%= user.nombre_user %>!</b></h3></center>
                         </div><br><br>
                         <!-- /.card-header -->
                      <h5 class="bienvenida">Aquí podrá consultar sus citas pendientes, verificar su calendario para ver su disponibilidad y asignar citas. También podrá ver los detalles de las citas que le hayan solicitado con usted o si han seleccionado una especialidad en específico.
