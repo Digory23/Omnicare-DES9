@@ -8,25 +8,25 @@
                     <div class="card" style="width: 18rem;">
                         <img src="img/patient1.png" class="card-img-top picture center" alt="...">
                         <div class="card-body">
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
+                            <h3 class="profile-username text-center"><%= user.nombre_user %></h3>
 
                             <p class="text-muted text-center">Paciente</p>
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Cédula</b> <a class="float-right">8-888-8888</a>
+                                    <b>Cédula</b> <a class="float-right"><%= user.datos_paciente.cedula %></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Teléfono</b> <a class="float-right">111-1111</a>
+                                    <b>Teléfono</b> <a class="float-right"><%= user.datos_paciente.telefono %></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Sexo</b> <a class="float-right">Femenino</a>
+                                    <b>Sexo</b> <a class="float-right"><%= user.datos_paciente.sexo %></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Tipo de Sangre</b> <a class="float-right">O+</a>
+                                    <b>Tipo de Sangre</b> <a class="float-right"><%= user.datos_paciente.tipo_sangre %></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Email</b> <a class="float-right">nombre@email.com</a>
+                                    <b>Email</b> <a class="float-right"><%= user.email_user %></a>
                                 </li>
                             </ul>
                         </div>
@@ -62,7 +62,7 @@
                     <div class="card">
                         <div class="card-header">
                            
-                                <h3><b>¡Bienvenido(a) Nina Mcintire!</b></h3>
+                                <h3><b>¡Bienvenido(a) <%= user.nombre_user %></b></h3>
                             
                         </div><br>
                         <!-- /.card-header -->

@@ -8,7 +8,10 @@ const userSchema = new mongoose.Schema({
     tipo_user: String,
     acceso: Boolean,
     datos_paciente:{
-        tipo_sangre: String
+        tipo_sangre: String,
+        cedula: String,
+        telefono: String,
+        sexo: String
     }
 });
 
