@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-
+//Rutas para cargar las paginas
 router.get('/', function(req, res){
     res.type('text/html');
     res.render('index', {
@@ -23,6 +23,7 @@ router.get('/Catalogo', function(req, res){
         page:3
     });
 });
+
 
 
 router.get('/Contacto', function(req, res){
@@ -55,6 +56,12 @@ router.get('/Checkout', function(req, res){
     });
 });
 
+router.get('/Ofertas', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        page:8
+    });
+});
 
 /*
 router.get('/Paciente', function(req, res){
