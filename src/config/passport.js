@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;//Indicamos el tipo de estrategia
 
-const Paciente = require('../models/paciente');//modelo de la base de datos con el que se trabajara
-const Cliente = require('../models/cliente-paciente');
+
+const User = require('../models/user');
 
 module.exports = function (passport) {
   // required for persistent login sessions
@@ -12,7 +12,7 @@ module.exports = function (passport) {
 
   // used to deserialize user
   passport.deserializeUser(function (id, done) {
-    Cliente.findById(id, function (err, user) {
+    User.findById(id, function (err, user) {
       done(err, user);
     });
   });
@@ -20,26 +20,26 @@ module.exports = function (passport) {
 
 
   // Signup de paciente
-  passport.use('cliente-signup', new LocalStrategy({
+  passport.use('user-signup', new LocalStrategy({
     // usernameField y passwordField son palabras reservadas
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback : true 
   },
   function (req, email, password, done) {
-    Cliente.findOne({'email_cli': email}, function (err, user) {
+    User.findOne({'email_user': email}, function (err, user) {
       if (err) {
         return done(err);
       }
       if (user) {
         return done(null, false, req.flash('signupMessage', 'the email is already taken'));
       } else {
-        var newCliente = new Cliente();
-        newCliente.email_cli = email;
-        newCliente.pass_cli = newCliente.generateHash(password);
-        newCliente.save(function (err) {
+        var newUser = new User();
+        newUser.email_user = email;
+        newUser.pass_user = newUser.generateHash(password);
+        newUser.save(function (err) {
           if (err) { throw err; }
-          return done(null, newCliente);
+          return done(null, newUser);
         });
       }
     });
@@ -50,14 +50,14 @@ module.exports = function (passport) {
  
 
 
-  // login del cliente
-  passport.use('cliente-login', new LocalStrategy({
+  // login del User
+  passport.use('user-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
   },
   function (req, email, password, done) {
-    Cliente.findOne({'email_cli': email}, function (err, user) {
+    User.findOne({'email_user': email}, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, req.flash('loginMessage', 'No User found'))

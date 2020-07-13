@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new mongoose.Schema({
-    nombre_cli: String,
-    email_cli: String,
-    pass_cli: String,
+    nombre_user: String,
+    email_user: String,
+    pass_user: String,
     tipo_user: String,
-    paciente: Boolean,
+    acceso: Boolean,
     datos_paciente:{
-        tipo_sangre: String
+        tipo_sangre: String,
+        cedula: String,
+        telefono: String,
+        sexo: String
     }
 });
 
@@ -18,9 +21,9 @@ userSchema.methods.generateHash = function (password) {
 
 // para verificar si la contraseña es valida
 userSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.pass_cli);
+    return bcrypt.compareSync(password, this.pass_user);
   };
 
   
 
-module.exports = mongoose.model('clientes', userSchema);
+module.exports = mongoose.model('usuarios', userSchema);
