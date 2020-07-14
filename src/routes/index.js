@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+// Require controller modules.
+var productoController = require('./../controllers/productoController');
+const productos = require('../models/productos');
 
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
@@ -19,9 +21,22 @@ router.get('/Farmacia', function(req, res){
 
 router.get('/Catalogo', function(req, res){
     res.type('text/html');
-    res.render('index', {
-        page:3
+    productos.find({}, function(err, data){
+        productos.countDocuments({}, function(err, count){
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
     });
+
+    // productos.countDocuments({}, function(err, count){
+    //     res.render('index', {
+    //         //page:3,
+    //         totalprod: count
+    //     });
+    // });
 });
 
 
@@ -56,7 +71,7 @@ router.get('/Checkout', function(req, res){
     });
 });
 
-router.get('/Ofertas', function(req, res){
+router.get('/Blog', function(req, res){
     res.type('text/html');
     res.render('index', {
         page:8
