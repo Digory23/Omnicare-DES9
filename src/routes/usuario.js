@@ -35,13 +35,7 @@ module.exports = (app, passport) => {
     }));
 
 
-    //profile view
-    app.get('/Perfil', isLoggedIn, IsPaciente, (req, res) => {
-        res.render('index-paciente-doctor', {
-            user: req.user,
-            tipo_usuario: req.user.tipo_user
-        });
-    });
+    
 
     // logout
     app.get('/Logout', (req, res) => {
