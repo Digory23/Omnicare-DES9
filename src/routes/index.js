@@ -104,15 +104,26 @@ router.get('/Compras', isLoggedIn, function(req, res){
     });
 });
 
-
-router.get('/Detalle-Producto', function(req, res){
+router.get('/Detalle-Producto/:id', async (req, res)=> {
     res.type('text/html');
+    const prod = await productos.findById(req.params.id);
+    console.log(prod)
     res.render('index', {
-        page:6
+        page:6,
+        prod
     });
 });
 
-
+/* router.get('/Detalle-Producto/:id', async (req, res, next)=> {
+    res.type('text/html');
+    await productos.findById(req.params.id);
+    console.log(prod)
+    res.render('index', {
+        page:6,
+        prod: data
+    });
+});
+ */
 router.get('/Checkout', function(req, res){
     res.type('text/html');
     res.render('index', {
