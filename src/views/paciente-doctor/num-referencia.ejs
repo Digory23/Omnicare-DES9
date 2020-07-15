@@ -1,0 +1,69 @@
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+<link rel="manifest" href="../img/favicon/site.webmanifest">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- icheck bootstrap -->
+<link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../css/paciente-doctor-css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+<body class="hold-transition login-page" style="background-image: url(../img/login2.jpg); background-size: cover;"></body>
+
+<div class="login-box">
+   <!-- <div class="login-logo">
+     <img src="../../dist/img/logo.png">
+   </div> -->
+   <!-- /.login-logo -->
+
+ <style>
+     .login-box-msg{
+         font-size: large !important;
+         padding: 0 10px 20px !important;
+     }
+
+     .form-control{
+        text-align:center; 
+        border: 1px solid gray !important;
+     }
+
+ </style>
+
+   <div class="card">
+     <div class="card-body login-card-body">
+       <div class="login-logo">
+         <img src="img/logo.png" width="200px">
+       </div>
+       <p class="login-box-msg">Ingrese su número de referencia médica para acceder a la clínica.</p>
+       
+       <form action="/Verificacion" method="post">
+        <div class="input-group input-group-lg">
+            <input type="text" name="numero" style="text-align:center; border: 1px solid gray !important;" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Ej: 456789">
+          </div><br>
+
+         <div class="row">
+           <div class="col-12 mt-3 mb-3">
+             <button type="submit" class="btn-lg btn-info btn-block">Continuar</button>
+           </div>
+         </div>
+       </form>
+ 
+     </div>
+     <!-- /.login-card-body -->
+   </div>
+ </div>
+ <!-- /.login-box -->
+
+ <!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../js/paciente-doctor-js/adminlte.min.js"></script>

@@ -62,7 +62,7 @@
                     <div class="card">
                         <div class="card-header">
                            
-                                <h3><b>¡Bienvenido(a) <%= user.nombre_user %></b></h3>
+                                <h3><b>¡Bienvenido(a) <%= user.nombre_user %> <%= user.apellido_user %></b></h3>
                             
                         </div><br>
                         <!-- /.card-header -->
@@ -80,19 +80,18 @@
                         <!-- /.card-body -->
                     </div>
 
-
-
                     <!--Futuras citas table-->
                     <!-- /.card -->
 
                 </div>
             </div>
 
-            <!-- Modal-->
+            <!-- Modal 1-->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                      <form action="/Solicitud" method="post">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Proporcione los datos de la solicitud</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -101,7 +100,6 @@
                         </div>
 
                         <div class="modal-body">
-                            <form action="/Solicitud" method="post">
                                 <!-- select -->
                                 <div class="form-group">
                                     <label>Departamentos:</label>
@@ -120,97 +118,54 @@
                                     <label>Doctores disponibles:</label>
                                     <select class="form-control" name="doctor">
                                         <option hidden>Seleccione</option>
-                                        <option>Diana García</option>
-                                        <option>Virgilio Valentín</option>
-                                        <option>Daniel Díaz</option>
+                                        
+                                        <% for(var i=0; i < doctores.length; i++) { %>
+                                        <option><%= doctores[i].nombre_user %></option> 
+                                        <% } %>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Motivo de la Cita:</label>
-                                    <textarea class="form-control" id="message-text" name="motivo"></textarea>
+                                    <textarea class="form-control" id="message-text" name="razon"></textarea>
                                 </div>
-                            </form>
-                        </div>
+                                <center><button id="enviarbtn" type="button" class="btn btn-primary" data-target="#exampleModal2" data-toggle="modal">Enviar</button></center>
+                                
+                            </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <input type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal">Enviar</input>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
+
+                <!--modal 2-->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel2">¡Solicitud de cita enviada exitosamente!</h5>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <p>Su solicitud será recibida por el médico que ha escogido. En unos días le llegará la
+                                                confirmación
+                                                de la cita a su correo, en él encontrará el día y hora establecidos según la
+                                                disponibilidad del
+                                                doctor. <br>¡Muchas gracias por preferir Omnicare!</p>
+
+                                            <center><button type="submit" class="btn btn-info">Cerrar</button></center>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <!--fin modal 2-->
+
+                    </form>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-            <form action="/Solicitud" method="post">
-                <!-- select -->
-                <div class="form-group">
-                    <label>Departamentos:</label>
-                    <select class="form-control">
-                        <option hidden>Seleccione</option>
-                        <option>Odontología</option>
-                        <option>Medicina General</option>
-                        <option>Dermatología</option>
-                        <option>Neurología</option>
-                        <option>Cardiología</option>
-                    </select>
-                </div>
-
-                <!-- select -->
-                <div class="form-group">
-                    <label>Doctores disponibles:</label>
-                    <select class="form-control" name="doctor">
-                        <option hidden>Seleccione</option>
-                        
-                        <% for(var i=0; i < doctores.length; i++) { %>
-                        <option><%= doctores[i].nombre_user %></option> 
-                        <% } %>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Motivo de la Cita:</label>
-                    <textarea class="form-control" id="message-text" name="razon"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal">Enviar</button>
-            </form>
-            <!-- fin Modal-->
-
-
-
-
-
-            <!--modal 2-->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¡Solicitud de cita enviada exitosamente!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <p>Su solicitud será recibida por el médico que ha escogido. En unos días le llegará la
-                                confirmación
-                                de la cita a su correo, en él encontrará el día y hora establecidos según la
-                                disponibilidad del
-                                doctor. <br>¡Muchas gracias por preferir Omnicare!</p>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--fin modal 2-->
-
+        <!-- fin Modal 1-->
 
             <br><br>
             <div class="row">
@@ -312,7 +267,3 @@
             </div>
         </div>
     </section>
-
-
-
-

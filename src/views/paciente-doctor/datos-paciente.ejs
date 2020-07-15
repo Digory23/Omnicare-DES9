@@ -15,7 +15,7 @@
  <!-- Google Font: Source Sans Pro -->
  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
- <body class="hold-transition login-page" style="background-image: url(../img/login1.jpg); background-size: cover;"></body>
+ <body class="hold-transition login-page" style="background-image: url(../img/data3.jpg); background-size: cover;"></body>
 
 <div class="register-box">
     <!-- <div class="register-logo">
@@ -27,45 +27,50 @@
         <div class="login-logo">
           <img src="../img/logo.png" width="200px">
         </div>
-        <p class="login-box-msg">Crear una cuenta nueva</p>
-        <form action="/Registro" method="post">
+        <p class="login-box-msg">Ingrese los datos solicitados en los siguientes campos</p>
+        <form action="/Datos-Paciente" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name= "nombre" placeholder="Nombre">
+            <input type="text" class="form-control" name= "cedula" placeholder="Cédula">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-user"></span>
+                <span class="far fa-id-card"></span>
               </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="apellido" placeholder="Apellido">
+            <input type="text" class="form-control" name="direccion" placeholder="Dirección">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-user"></span>
+                <span class="fas fa-home"></span>
               </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" name= "email" placeholder="Email">
+            <input type="text" class="form-control" name= "telefono" placeholder="Teléfono">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
+                <span class="fas fa-phone"></span>
               </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name= "password" placeholder="Contraseña">
+            <input type="text" class="form-control" name= "tipo_sangre" placeholder="Tipo de Sangre">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+                <span class="fas fa-heartbeat"></span>
               </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Repite la contraseña">
+                <select class="form-control" name="sexo">
+                    <option hidden>Sexo</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                    <option>No especificar</option>
+                </select>
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+                <span class="fas fa-venus-mars"></span>
               </div>
             </div>
           </div>
@@ -83,12 +88,11 @@
           </div>
           <div class="row">
             <div class="col-12 mt-3 mb-3">
-              <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+              <button type="submit" class="btn btn-info btn-block">Confirmar datos</button>
             </div>
           </div>
         </form>
-  
-      <center><a href="Login" class="text-center">Ya tengo una cuenta</a></center>
+
       </div>
       <!-- /.form-box -->
     </div><!-- /.card -->
