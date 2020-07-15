@@ -68,7 +68,7 @@ module.exports = (app) => {
 
 }
 
-
+//esta funcion valida el tipo de usuario
 function TipoUser(req, res, next) {
     if (req.user.tipo_user== "1"){
         res.redirect('/Perfil-Paciente');

@@ -37,12 +37,14 @@ module.exports = (app, passport) => {
 
     //aqui se supone que deberia funcionanr esta MIERDA
     app.post('/Datos-Paciente', async (req, res, next) => {
-        
-    await User.update({email_user: req.user.email_user},
+    const email = req.user.email_user;
+    const tipo_san =  req.body.tipo_sangre;
+    console.log(email)
+    await User.update({email_user: email},
         {
             $set:
             {
-                tipo_sangre: req.body.tipo_sangre,
+                tipo_sangre: tipo_san
 
             }
         })
