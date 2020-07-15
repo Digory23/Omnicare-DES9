@@ -37,7 +37,7 @@ router.get('/Catalogo', function(req, res){
 router.get('/Analgesicos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "analgésico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "analgésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -51,7 +51,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Anestesicos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "anestésico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "anestésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -65,7 +65,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Antiacidos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "antiácido"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "antiácido"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -79,7 +79,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Antibioticos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "antibiótico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "antibiótico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
