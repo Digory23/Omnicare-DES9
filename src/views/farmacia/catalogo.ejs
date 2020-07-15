@@ -25,10 +25,10 @@
                     <div class="sidebar__item">
                         <h4>Categorías</h4>
                         <ul>
-                            <li><a href="#">Analgésicos</a></li>
-                            <li><a href="#">Anestésicos</a></li>
-                            <li><a href="#">Antiacios</a></li>
-                            <li><a href="#">Antibioticos</a></li>
+                            <li><a href="Analgesicos">Analgésicos</a></li>
+                            <li><a href="Anestesicos">Anestésicos</a></li>
+                            <li><a href="Antiacidos">Antiácidos</a></li>
+                            <li><a href="Antibioticos">Antibióticos</a></li>
                         </ul>
                     </div>
                     <div class="sidebar__item">
@@ -208,12 +208,13 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="Detalle-Producto"><%= productos.nombre_prod %></a></h6>
+                                <h6><a href="Detalle-Producto/<%= productos.codigo_prod%>"><%= productos.nombre_prod %></a></h6>
                                 <h5>B/. <%= productos.precio_unitario %></h5>
                             </div>
                         </div>
                     </div>
-                    <% }) %>
+                    <% }) %> 
+
                     <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/producto2.jpg">
@@ -301,6 +302,3 @@
     </div>
 </section>
 <!-- Productos/Catalogo End  -->
-<!-- <% productos.forEach(function (productos){ %>
-    <%= productos.nombre_prod %><br>
-<% }) %> -->

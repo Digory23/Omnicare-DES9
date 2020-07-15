@@ -30,15 +30,64 @@ router.get('/Catalogo', function(req, res){
             });
         });
     });
-
-    // productos.countDocuments({}, function(err, count){
-    //     res.render('index', {
-    //         //page:3,
-    //         totalprod: count
-    //     });
-    // });
 });
 
+//Rutas para las categorías de productos. Actualizan los productos a la categoria seleccionada
+//Analgésicos
+router.get('/Analgesicos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "analgésico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Anestésicos
+  router.get('/Anestesicos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "anestésico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Antiácidos
+  router.get('/Antiacidos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "antiácido"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Antibióticos
+  router.get('/Antibioticos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "antibiótico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
 
 
 router.get('/Contacto', function(req, res){
