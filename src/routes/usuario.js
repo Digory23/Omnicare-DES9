@@ -1,6 +1,7 @@
 module.exports = (app, passport) => {
 
-
+    const Referencia = require('../models/referencia');
+    const User = require('../models/user');
     //login
     app.get('/Login', (req, res) => {
         res.type('text/html');
@@ -10,15 +11,45 @@ module.exports = (app, passport) => {
     });
 
     //ruta de solicitud de numero de referencia para acceder a la clinica
-    app.get('/Verificacion', (req, res) => {
+    app.get('/Verificacion', isLoggedIn,(req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/num-referencia');
+    });
+
+    app.post('/Verificacion', async (req, res) => {
+        
+        /*const reference = await Referencia.find(
+           {numero: req.body.numero}
+        )
+        console.log(reference);
+        if(reference.length == 1){
+            res.redirect('/Datos-Paciente');
+        }*/
+        res.redirect('/Datos-Paciente');
+        
     });
 
     //ruta de solicitud de datos del paciente para mostrar en dashboard
     app.get('/Datos-Paciente', (req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/datos-paciente');
+    });
+
+    //aqui se supone que deberia funcionanr esta MIERDA
+    app.post('/Datos-Paciente', async (req, res, next) => {
+        
+    await User.update({email_user: req.user.email_user},
+        {
+            $set:
+            {
+                tipo_sangre: req.body.tipo_sangre,
+
+            }
+        })
+
+        
+        
+        res.redirect('/');
     });
 
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)

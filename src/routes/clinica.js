@@ -29,6 +29,7 @@ module.exports = (app) => {
         const solicitud = await Solicitud.find(
             {doctor: req.user.nombre_user}
         )
+        console.log(solicitud);
         res.render('index-paciente-doctor', {
             solicitud,
             user: req.user,
@@ -40,7 +41,7 @@ module.exports = (app) => {
     app.post('/Solicitud', async (req, res, next) => {
         const cita = new Solicitud(req.body);
         cita.ced_paciente = req.user.datos_paciente.cedula;
-        cita.paciente = req.user.nombre_user;
+        cita.paciente = req.user.nombre_user +" "+req.user.apellido_user;
         await cita.save();
         res.redirect('/Perfil-Paciente');
     });
