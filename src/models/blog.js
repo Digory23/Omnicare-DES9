@@ -4,7 +4,7 @@ const blogSchema = new mongoose.Schema({
     titulo_post: String,
     cuerpo_post: String,
     desc_post: String,
-    fecha_post: Date,
+    fecha_post: String,
     autor_post: String
 });
 
