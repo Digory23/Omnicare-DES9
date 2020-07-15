@@ -14,7 +14,7 @@
           <img src="../img/doctor.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Dr. <%= user.nombre_cli %></a>
+          <a href="#" class="d-block"><%= user.nombre_user %></a>
         </div>
       </div>
 
@@ -51,13 +51,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../paciente-doctor/AgendarCita.html" class="nav-link">
+                <a href="AgendarCita" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agendar Citas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../paciente-doctor/MostrarCitas.html" class="nav-link active">
+                <a href="CitasPendientes" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Citas Pendientes</p>
                 </a>
@@ -65,15 +65,7 @@
             </ul>
           </li>
           
-          <li class="nav-item has-treeview">
-            <a href="../paciente-doctor/paciente.html" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Cambiar a Paciente
-              </p>
-            </a>
-           
-          </li>
+          
 
         </ul>
       </nav>

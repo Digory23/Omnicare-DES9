@@ -66,12 +66,18 @@
     <div class="content-wrapper">
 
 
-      <% switch(user.tipo_user) {
+      <% switch(tipo_usuario) {
         case "1": %>
         <%- include ('paciente-doctor/paciente') %>
       <% break
         case "2": %>
         <%- include ('paciente-doctor/doctor') %>
+      <% break
+      case "3": %>
+        <%- include ('paciente-doctor/agendar-cita') %>
+      <% break
+      case "4": %>
+        <%- include ('paciente-doctor/citas-pendientes') %>
       <% break
         default: %>
       <%- include ('farmacia/404') %>

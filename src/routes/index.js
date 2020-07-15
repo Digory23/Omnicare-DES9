@@ -4,7 +4,7 @@ const router = express.Router();
 var productoController = require('./../controllers/productoController');
 const productos = require('../models/productos');
 
-
+//Rutas para cargar las paginas
 router.get('/', function(req, res){
     res.type('text/html');
     res.render('index', {
@@ -30,14 +30,64 @@ router.get('/Catalogo', function(req, res){
             });
         });
     });
-
-    // productos.countDocuments({}, function(err, count){
-    //     res.render('index', {
-    //         //page:3,
-    //         totalprod: count
-    //     });
-    // });
 });
+
+//Rutas para las categorías de productos. Actualizan los productos a la categoria seleccionada
+//Analgésicos
+router.get('/Analgesicos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "analgésico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Anestésicos
+  router.get('/Anestesicos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "anestésico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Antiácidos
+  router.get('/Antiacidos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "antiácido"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
+
+  //Antibióticos
+  router.get('/Antibioticos', function (req, res){
+    res.type('text/html');
+    productos.find({tipo_prod: "antibiótico"}, function(err, data){
+        productos.count({}, function(err, count){    
+            res.render('index', {
+                page:3,
+                productos: data,
+                prodconteo: count
+            });
+        });
+    });
+  });
 
 
 router.get('/Contacto', function(req, res){
@@ -47,7 +97,7 @@ router.get('/Contacto', function(req, res){
     });
 });
 
-router.get('/Compras', function(req, res){
+router.get('/Compras', isLoggedIn, function(req, res){
     res.type('text/html');
     res.render('index', {
         page:5
@@ -77,7 +127,6 @@ router.get('/Blog', function(req, res){
     });
 });
 
-
 /*
 router.get('/Paciente', function(req, res){
     res.type('text/html');
@@ -88,6 +137,12 @@ router.get('/Paciente', function(req, res){
     });
 });*/
 
-
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/Login');
+}
 
 module.exports = router;
+

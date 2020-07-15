@@ -1,67 +1,95 @@
-module.exports = (app, passport) => {
+module.exports = (app) => {
+    const Solicitud = require('../models/solicitud_cita')
+    const User = require('../models/user');
 
-
-    //login
-    app.get('/Login', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/login', {
-            message: req.flash('loginMessage')
-        });
-    });
-
-    //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
-    app.post('/Login', passport.authenticate('cliente-login', {
-
-        successRedirect: '/',
-        failureRedirect: '/Login',
-        failureFlash: true // allow flash messages
-    }));
-
-
-    // signup view
-    app.get('/Registro', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/register', {
-            message: req.flash('signupMessage')
-        });
+    //esta ruta valida el tipo de usuario (funcion tipo user)
+    app.get('/Perfil-Validate', isLoggedIn, IsPaciente, TipoUser, async (req, res) => {
+        //res.render('index-paciente-doctor');
     });
 
 
-    //ruta donde creamos un nuevo usuario (paciente-signup lo creamos en passport)
-    app.post('/Registro', passport.authenticate('cliente-signup', {
-        successRedirect: '/',
-        failureRedirect: '/Registro',
-        failureFlash: true // allow flash messages
-    }));
-
-
-    //profile view
-    app.get('/Perfil', isLoggedIn, IsPaciente, (req, res) => {
+    //profile view de paciente 
+    app.get('/Perfil-Paciente', isLoggedIn, async (req, res) => {
+        //se obtienen los doctores disponibles
+        const doctores = await User.find(
+            {tipo_user : "2"}
+        )
         res.render('index-paciente-doctor', {
+           user: req.user,
+           tipo_usuario: "1",
+           doctores
+        });
+    });
+
+
+    //profile view de doctor
+    app.get('/Perfil-Doctor', isLoggedIn, async (req, res) => {
+        
+        //se muestran las solicitudes de citas hechas al doctor que inicio sesion
+        const solicitud = await Solicitud.find(
+            {doctor: req.user.nombre_user}
+        )
+        res.render('index-paciente-doctor', {
+            solicitud,
+            user: req.user,
+            tipo_usuario: "2"
+        });
+    });
+
+    //en esta ruta se inserta la solicitud de cita en la base de datos
+    app.post('/Solicitud', async (req, res, next) => {
+        const cita = new Solicitud(req.body);
+        cita.ced_paciente = req.user.datos_paciente.cedula;
+        cita.paciente = req.user.nombre_user;
+        await cita.save();
+        res.redirect('/Perfil-Paciente');
+    });
+
+
+    //vista de agendar citas del doctor
+    app.get('/AgendarCita', function (req, res) {
+        res.type('text/html');
+        res.render('index-paciente-doctor', {
+            tipo_usuario: "3",
             user: req.user
         });
     });
 
-    // logout
-    app.get('/Logout', (req, res) => {
-        req.logout();
-        res.redirect('/Login');
+
+    //citas pendientes del doctor
+    app.get('/CitasPendientes', function (req, res) {
+        res.type('text/html');
+        res.render('index-paciente-doctor', {
+            tipo_usuario: "4",
+            user: req.user
+        });
     });
 
-};
+}
 
 
+function TipoUser(req, res, next) {
+    if (req.user.tipo_user== "1"){
+        res.redirect('/Perfil-Paciente');
+      }
+      else{
+        res.redirect('/Perfil-Doctor');
+      }
+}
+
+//verifica si tiene permiso de paciente o doctor
 function IsPaciente(req, res, next) {
-    if (req.user.paciente) {
+    if (req.user.acceso) {
         return next();
     }
     res.redirect('/');
 }
 
-
+//verifica si existe sesion
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
     res.redirect('/Login');
 }
+
