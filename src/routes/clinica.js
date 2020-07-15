@@ -82,7 +82,7 @@ function IsPaciente(req, res, next) {
     if (req.user.acceso) {
         return next();
     }
-    res.redirect('/');
+    res.redirect('/Verificacion');
 }
 
 //verifica si existe sesion

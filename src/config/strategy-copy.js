@@ -48,8 +48,7 @@ function Strategy(options, verify) {
   
   this._usernameField = options.usernameField || 'username';
   this._passwordField = options.passwordField || 'password';
-  this._nombreField = options.nombreField || 'nombre';//campo de nombre y apellido adicionales
-  this._apellidoField = options.apellidoField || 'apellido';
+  
   
   passport.Strategy.call(this);
   this.name = 'local';
@@ -72,10 +71,9 @@ Strategy.prototype.authenticate = function(req, options) {
   options = options || {};
   var username = lookup(req.body, this._usernameField) || lookup(req.query, this._usernameField);
   var password = lookup(req.body, this._passwordField) || lookup(req.query, this._passwordField);
-  var nombre = lookup(req.body, this._nombreField) || lookup(req.query, this._nombreField);
-  var apellido = lookup(req.body, this._apellidoField) || lookup(req.query, this._apellidoField);
   
-  if (!username || !password || !nombre || !apellido) {
+  
+  if (!username || !password) {
     return this.fail({ message: options.badRequestMessage || 'Missing credentials' }, 400);
   }
   
@@ -89,9 +87,9 @@ Strategy.prototype.authenticate = function(req, options) {
   
   try {
     if (self._passReqToCallback) {
-      this._verify(req, username, password, nombre, apellido, verified);
+      this._verify(req, username, password,  verified);
     } else {
-      this._verify(username, password, nombre, apellido, verified);
+      this._verify(username, password,  verified);
     }
   } catch (ex) {
     return self.error(ex);
@@ -103,3 +101,4 @@ Strategy.prototype.authenticate = function(req, options) {
  * Expose `Strategy`.
  */
 module.exports = Strategy;
+
