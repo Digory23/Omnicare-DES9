@@ -9,6 +9,18 @@ module.exports = (app, passport) => {
         });
     });
 
+    //ruta de solicitud de numero de referencia para acceder a la clinica
+    app.get('/Verificacion', (req, res) => {
+        res.type('text/html');
+        res.render('paciente-doctor/num-referencia');
+    });
+
+    //ruta de solicitud de datos del paciente para mostrar en dashboard
+    app.get('/Datos-Paciente', (req, res) => {
+        res.type('text/html');
+        res.render('paciente-doctor/datos-paciente');
+    });
+
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
     app.post('/Login', passport.authenticate('user-login', {
 
