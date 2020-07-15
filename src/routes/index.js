@@ -124,9 +124,12 @@ router.get('/Checkout', function(req, res){
 router.get('/Blog', function(req, res){
     res.type('text/html');
     blog.find({}, function(err, data){
-        res.render('index', {
-            page:8,
-            posts: data
+        blog.countDocuments({}, function(err, count){
+            res.render('index', {
+                page:8,
+                posts: data,
+                cantposts: count
+            });
         });
     });
 });

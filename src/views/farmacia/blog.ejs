@@ -25,22 +25,22 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="row">
                         <% posts.forEach(function (posts){ %>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-2.jpg" alt="">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="blog__item">
+                                        <div class="blog__item__pic">
+                                            <img src="img/blog-posts/blogpost1.jpg" alt="">
+                                        </div>
+                                        <div class="blog__item__text">
+                                            <ul>
+                                                <li><i class="fa fa-calendar-o"></i> <%= posts.fecha_post %></li>
+                                                <li><i class="fa fa-comment-o"></i> 5</li>
+                                            </ul>
+                                            <h5><a href="#"><%= posts.titulo_post %></a></h5>
+                                            <p><%= posts.desc_post %></p>
+                                            <a href="#" class="blog__btn">Leer más<span class="arrow_right"></span></a>
+                                        </div>
+                                    </div> 
                                 </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> <%= posts.fecha_post %></li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#"><%= posts.titulo_post %></a></h5>
-                                    <p><%= posts.desc_post %></p>
-                                    <a href="#" class="blog__btn">Leer más<span class="arrow_right"></span></a>
-                                </div>
-                            </div> 
-                        </div>
                         <% }) %>
                     </div>
                 </div>
@@ -48,3 +48,4 @@
         </div>
     </section>
     <!-- Blog Section End -->
+    <%= cantposts %>
