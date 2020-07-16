@@ -8,7 +8,8 @@ const productSchema = new mongoose.Schema({
     precio_unitario: Number,
     cant_stock: Number,
     peso_prod: String,
-    info_prod: String
+    info_prod: String,
+    img_prod: String
 });
 
 // // Virtual for book's URL
