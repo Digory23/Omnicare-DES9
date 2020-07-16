@@ -49,7 +49,6 @@ function Strategy(options, verify) {
   this._usernameField = options.usernameField || 'username';
   this._passwordField = options.passwordField || 'password';
   
-  
   passport.Strategy.call(this);
   this.name = 'local';
   this._verify = verify;
@@ -72,7 +71,6 @@ Strategy.prototype.authenticate = function(req, options) {
   var username = lookup(req.body, this._usernameField) || lookup(req.query, this._usernameField);
   var password = lookup(req.body, this._passwordField) || lookup(req.query, this._passwordField);
   
-  
   if (!username || !password) {
     return this.fail({ message: options.badRequestMessage || 'Missing credentials' }, 400);
   }
@@ -87,9 +85,9 @@ Strategy.prototype.authenticate = function(req, options) {
   
   try {
     if (self._passReqToCallback) {
-      this._verify(req, username, password,  verified);
+      this._verify(req, username, password, verified);
     } else {
-      this._verify(username, password,  verified);
+      this._verify(username, password, verified);
     }
   } catch (ex) {
     return self.error(ex);
@@ -101,4 +99,3 @@ Strategy.prototype.authenticate = function(req, options) {
  * Expose `Strategy`.
  */
 module.exports = Strategy;
-
