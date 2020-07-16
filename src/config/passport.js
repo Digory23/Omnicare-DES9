@@ -24,9 +24,11 @@ module.exports = function (passport) {
     // usernameField y passwordField son palabras reservadas
     usernameField: 'email',
     passwordField: 'password',
+    //nombreField: 'nombre',
+    //apellidoField: 'apellido',
     passReqToCallback : true 
   },
-  function (req, email, password, done) {
+  function (req, email, password, /*nombre, apellido,*/ done) {
     User.findOne({'email_user': email}, function (err, user) {
       if (err) {
         return done(err);
@@ -35,6 +37,8 @@ module.exports = function (passport) {
         return done(null, false, req.flash('signupMessage', 'the email is already taken'));
       } else {
         var newUser = new User();
+        newUser.nombre_user = req.body.nombre;
+        newUser.apellido_user = req.body.apellido;
         newUser.email_user = email;
         newUser.pass_user = newUser.generateHash(password);
         newUser.save(function (err) {
