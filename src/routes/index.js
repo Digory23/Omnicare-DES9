@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Require controller modules.
 var productoController = require('./../controllers/productoController');
+var flash = require('connect-flash');
 const productos = require('../models/productos');
 const blog = require('../models/blog');
 const carrito = require('../models/carrito');
@@ -98,8 +99,11 @@ router.get('/Analgesicos', function (req, res){
     prod.codigo_prod = req.params.codigo ;
     prod.usuario = req.user.email_user ;
     await prod.save();
-    res.redirect('/Catalogo')
+    req.flash('success_msg', 'Producto Agregado');
+    res.redirect('/Catalogo');
   })
+
+
 
 
 router.get('/Contacto', function(req, res){
