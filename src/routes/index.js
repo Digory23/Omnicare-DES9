@@ -3,6 +3,7 @@ const router = express.Router();
 // Require controller modules.
 var productoController = require('./../controllers/productoController');
 const productos = require('../models/productos');
+const blog = require('../models/blog');
 
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
@@ -37,7 +38,7 @@ router.get('/Catalogo', function(req, res){
 router.get('/Analgesicos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "analgésico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "analgésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -51,7 +52,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Anestesicos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "anestésico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "anestésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -65,7 +66,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Antiacidos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "antiácido"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "antiácido"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -79,7 +80,7 @@ router.get('/Analgesicos', function (req, res){
   router.get('/Antibioticos', function (req, res){
     res.type('text/html');
     productos.find({tipo_prod: "antibiótico"}, function(err, data){
-        productos.count({}, function(err, count){    
+        productos.find({tipo_prod: "antibiótico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
@@ -104,15 +105,26 @@ router.get('/Compras', isLoggedIn, function(req, res){
     });
 });
 
-
-router.get('/Detalle-Producto', function(req, res){
+router.get('/Detalle-Producto/:id', async (req, res)=> {
     res.type('text/html');
+    const prod = await productos.findById(req.params.id);
+    console.log(prod)
     res.render('index', {
-        page:6
+        page:6,
+        prod
     });
 });
 
-
+/* router.get('/Detalle-Producto/:id', async (req, res, next)=> {
+    res.type('text/html');
+    await productos.findById(req.params.id);
+    console.log(prod)
+    res.render('index', {
+        page:6,
+        prod: data
+    });
+});
+ */
 router.get('/Checkout', function(req, res){
     res.type('text/html');
     res.render('index', {
@@ -122,8 +134,14 @@ router.get('/Checkout', function(req, res){
 
 router.get('/Blog', function(req, res){
     res.type('text/html');
-    res.render('index', {
-        page:8
+    blog.find({}, function(err, data){
+        blog.countDocuments({}, function(err, count){
+            res.render('index', {
+                page:8,
+                posts: data,
+                cantposts: count
+            });
+        });
     });
 });
 
