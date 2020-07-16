@@ -125,6 +125,9 @@ router.get('/Detalle-Producto/:id', async (req, res)=> {
     });
 });
  */
+
+
+
 router.get('/Checkout', function(req, res){
     res.type('text/html');
     res.render('index', {
@@ -140,6 +143,19 @@ router.get('/Blog', function(req, res){
                 page:8,
                 posts: data,
                 cantposts: count
+            });
+        });
+    });
+});
+
+router.get('/Ofertas', function(req, res){
+    res.type('text/html');
+    productos.find({}, function(err, data){
+        productos.countDocuments({}, function(err, count){
+            res.render('index', {
+                page:9,
+                productos: data,
+                prodconteo: count
             });
         });
     });
