@@ -3,6 +3,7 @@ const router = express.Router();
 // Require controller modules.
 var productoController = require('./../controllers/productoController');
 const productos = require('../models/productos');
+const blog = require('../models/blog');
 
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
@@ -133,8 +134,14 @@ router.get('/Checkout', function(req, res){
 
 router.get('/Blog', function(req, res){
     res.type('text/html');
-    res.render('index', {
-        page:8
+    blog.find({}, function(err, data){
+        blog.countDocuments({}, function(err, count){
+            res.render('index', {
+                page:8,
+                posts: data,
+                cantposts: count
+            });
+        });
     });
 });
 
