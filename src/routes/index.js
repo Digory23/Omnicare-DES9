@@ -5,6 +5,22 @@ var productoController = require('./../controllers/productoController');
 const productos = require('../models/productos');
 const blog = require('../models/blog');
 
+//prueba para headers - update: no sirvió xd
+/*router.get('shared/header', function(req, res){
+    res.type('text/html');
+    res.render('index', {
+        header:1
+    });
+});
+
+router.get('shared/header-logged', function(req, res){
+    if(isLoggedIn){
+    res.type('text/html');
+    res.render('index', {
+        header:2
+    });}
+});*/
+
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
     res.type('text/html');

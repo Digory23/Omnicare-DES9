@@ -105,7 +105,7 @@ module.exports = (app, passport) => {
     // logout
     app.get('/Logout', (req, res) => {
         req.logout();
-        res.redirect('/Login');
+        res.redirect('/');
     });
 
 };
