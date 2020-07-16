@@ -35,24 +35,44 @@ module.exports = (app, passport) => {
         res.render('paciente-doctor/datos-paciente');
     });
 
-    //aqui se supone que deberia funcionanr esta MIERDA
-    app.post('/Datos-Paciente', async (req, res, next) => {
-    const email = req.user.email_user;
-    const tipo_san =  req.body.tipo_sangre;
-    console.log(email)
-    await User.update({email_user: email},
-        {
-            $set:
+
+       //aqui se supone que deberia funcionanr esta MIERDA
+        app.post('/Datos-Paciente', async (req, res, next) => {
+        const email = req.user.email_user;
+        const tipo_san =  req.body.tipo_sangre;
+        const ced = req.body.cedula;
+        const dir = req.body.direccion;
+        const tel = req.body.telefono;
+        const sex = req.body.sexo;
+        console.log(email)
+        await User.update({email_user: email},
             {
-                tipo_sangre: tipo_san
+                $set:
+                { 
+                    acceso: true,
+                    tipo_user: 1,
+                    tipo_sangre: tipo_san,
+                    cedula: ced,
+                    direccion: dir,
+                    telefono: tel,
+                    sexo: sex
+                }
+            })
+            res.redirect('/');
+        });
 
-            }
-        })
+    /*app.put("/usuarios/:id", async (req, res) => {
+        const id = req.params.id;
+        const updated = req.body;
+        try {
+          await User.findByIdAndUpdate(id,updated).exec();
+          res.send("actualizado correctamente");
+        } catch (error) {
+          console.log(`error actualizando paciente ${error}`);
+          res.json({});
+        }
+      });*/
 
-        
-        
-        res.redirect('/');
-    });
 
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
     app.post('/Login', passport.authenticate('user-login', {

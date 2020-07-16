@@ -40,7 +40,7 @@ module.exports = (app) => {
     //en esta ruta se inserta la solicitud de cita en la base de datos
     app.post('/Solicitud', async (req, res, next) => {
         const cita = new Solicitud(req.body);
-        cita.ced_paciente = req.user.datos_paciente.cedula;
+        cita.ced_paciente = req.user.cedula;
         cita.paciente = req.user.nombre_user +" "+req.user.apellido_user;
         await cita.save();
         res.redirect('/Perfil-Paciente');
