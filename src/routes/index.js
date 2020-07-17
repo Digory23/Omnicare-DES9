@@ -4,6 +4,7 @@ const router = express.Router();
 var productoController = require('./../controllers/productoController');
 const productos = require('../models/productos');
 const blog = require('../models/blog');
+const carrito = require('../models/carrito');
 
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
@@ -89,6 +90,16 @@ router.get('/Analgesicos', function (req, res){
         });
     });
   });
+
+
+  //añadir productos al carrito AQUIIIIIIIIIIIIIIII
+  router.get('/Add-Producto/:codigo', async(req,res) =>{
+    const prod = new carrito();
+    prod.codigo_prod = req.params.codigo ;
+    prod.usuario = req.user.email_user ;
+    await prod.save();
+    res.redirect('/Catalogo')
+  })
 
 
 router.get('/Contacto', function(req, res){
