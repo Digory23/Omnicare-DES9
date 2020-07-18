@@ -12,11 +12,6 @@ const productSchema = new mongoose.Schema({
     img_prod: String
 });
 
-// // Virtual for book's URL
-// productSchema
-// .virtual('url')
-// .get(function () {
-//   return '/detalle-producto/' + this._id;
-// });
+
 
 module.exports = mongoose.model('productos', productSchema, 'productos');

@@ -152,11 +152,11 @@ router.get('/Analgesicos', function (req, res){
 
     const producto= await productos.findOne(
         {codigo_prod: req.params.codigo}
-    ).populate('nombre_prod');
+    )
     
         console.log(producto)
-        prod.nombre_prod = producto;
-       // prod.precio_unitario = datos.precio_unitario;
+        prod.nombre_prod = producto.nombre_prod;
+        prod.precio_unitario = producto.precio_unitario;
 
         await prod.save();
         res.redirect('/Catalogo')
