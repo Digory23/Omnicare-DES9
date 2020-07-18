@@ -1,0 +1,182 @@
+
+
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+     <div class="container-fluid">
+       <div class="row mb-2">
+         <div class="col-sm-6">
+           <h1>Mostrar Citas Médicas</h1>
+         </div>
+         <div class="col-sm-6">
+           <ol class="breadcrumb float-sm-right">
+             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+             <li class="breadcrumb-item active">Mostrar Citas</li>
+           </ol>
+         </div>
+       </div>
+     </div><!-- /.container-fluid -->
+   </section>
+
+   <style>
+               
+       .col-md-10{
+           display: block;
+         margin-left: auto;
+         margin-right: auto;
+       }
+         .center {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+         margin-bottom: 5px;
+       }
+
+       .card-primary:not(.card-outline)>.card-header {
+         background-color: #007EA7 !important;
+       }
+
+       .btn-primary{
+           background-color: lightcoral !important;
+           border-color: lightpink !important;
+         }
+
+         .btn-block {
+           display: block;
+           width: 50% !important;
+           margin-left: auto;
+           margin-right: auto;
+         }
+
+         .float-left{
+           margin-right: 30px;
+         }
+
+         .card-title{
+           text-align: center !important;
+           float: initial;
+         }
+
+         /*.btn-default{
+           display: block;
+           width: 20% !important;
+           margin-left: auto;
+           margin-right: auto;
+         }*/
+       </style>
+
+   <!-- Main content -->
+   <section class="content">
+     <div class="container-fluid">
+       <div class="row">
+
+           <!--tablaaaa-->
+
+           <div class="col-md-10">
+         
+               <!--TABLA QUE USARAAAAAAAAS-->
+               <div class="card">
+                 <div class="card-header">
+                   <h3 class="card-title">Datos solicitados para la cita</h3>
+                 </div>
+                 <!-- /.card-header -->
+                 <div class="card-body p-0">
+                   <table class="table table-striped">
+                     <thead>
+                       <tr>
+                         <th style="width: 10px"></th>
+                         <th>Dr(a) Solicitado</th>
+                         <th>Especialidad</th>
+                         <th>Motivo de Cita</th>
+                         <th>Fecha y Hora</th>
+                         <th style="width: 40px">Estado de cita</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr>
+                         <td>1.</td>
+                         <td>Manuel López</td>
+                         <td>Cardiología</td>
+                         <td>Dolores en el pecho</td>
+                         <td>No asignada</td>
+                        
+                         <td><span class="badge bg-warning">Pendiente</span></td>
+                       </tr>
+                       <tr>
+                         <td>2.</td>
+                         <td>Daniel Díaz</td>
+                         <td>Alergología</td>
+                         <td>Alergia a aceitunas</td>
+                         <td>3 de Julio, 11:00 a.m.</td>
+                         <td><span class="badge bg-danger">Cancelada</span></td>
+                       </tr>
+                       <tr>
+                         <td>3.</td>
+                         <td>Virgilio Valentín</td>
+                         <td>Neurología</td>
+                         <td>Fuertes migrañas continuas</td>
+                         <td>14 de Agosto, 1:30 p.m.</td>
+                         <td><span class="badge bg-warning">Pendiente</span></td>
+                       </tr>
+                       <tr>
+                         <td>4.</td>
+                         <td>Diana García</td>
+                         <td>Dermatología</td>
+                         <td>Brote desconocido en el brazo derecho.</td>
+                         <td>25 de Octubre, 10:30 a.m.</td>
+                         <td><span class="badge bg-success">Asignada</span>
+                           <div class="card-tools">
+                               <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#infocita">Ver más</button>
+                             </div>
+                       </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                 </div>
+                 <!-- /.card-body -->
+               </div>
+               <!-- /.card -->
+             </div>
+
+             <!--fin tablaaa-->
+             
+           <!-- /.card -->
+
+         
+       </div>
+       <!-- /.row -->
+       <div class="col-md-10">
+           <div class="card card-default">
+         <div class="card-header">
+           <h3 class="card-title">Datos de cita asignada</h3>
+         </div>
+         <!-- /.card-header -->
+         <div id="infocita" class="card-body collapse">
+           <img src="../img/doctor1.png" alt="Doctor" width="200" height="200" class="float-left">
+           <div class="row">
+             
+             <dl class="row" style="margin-top: 20px;">
+               <dt class="col-sm-4">Doctor(a)</dt>
+               <dd class="col-sm-8">Diana García</dd><hr>
+               <dt class="col-sm-4">Especialidades</dt>
+               <dd class="col-sm-8">Dermatología, Cardiología</dd><br><br>
+               <dt class="col-sm-4">Su motivo de cita:</dt>
+               <dd class="col-sm-8">Brote desconocido en el brazo derecho.</dd><br>
+               <dd class="col-sm-10">Se le contactará a su número de teléfono registrado en nuestra plataforma y recibirá un correo electrónico como recordatorio para su cita.</dd>
+             </dl>
+          </div>
+           <!-- /.row -->
+         </div>
+       </div>
+         <!-- /.card-body -->
+       </div>
+       <!-- /.card -->
+     </div><!-- /.container-fluid -->
+   </section>
+   <!-- /.content -->
+ </div>
+ <!-- /.content-wrapper -->
+<!-- ./wrapper -->
+
