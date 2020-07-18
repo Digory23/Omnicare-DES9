@@ -50,16 +50,39 @@
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" name="cantidad" value="1">
-                                    <input type="hidden" name="nombre" value="<%= prod.nombre_prod%>">
-                                    <input type="hidden" name="precio" value="<%= prod.precio_unitario%>">
-                                    <input type="hidden" name="codigo" value="<%= prod.codigo_prod%>">
+
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="primary-btn">Añadir al carrito</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                    </form>
+                        <input type="hidden" name="nombre" value="<%= prod.nombre_prod%>">
+                        <input type="hidden" name="precio" value="<%= prod.precio_unitario%>">
+                        <input type="hidden" name="codigo" value="<%= prod.codigo_prod%>">
+                        <button id="agregar" type="button" class="primary-btn" data-target="#exampleModal2" data-toggle="modal">Añadir al carrito</button>
+                        
 
+                        <!--modal-->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel2">¡Producto añadido al carrito!</h5>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <center><img src="/img/check.png" style="width: 220px !important;" alt=""></center>
+                                            <center><p>Para ver sus productos debe ir su carrito de compras.</p></center>
+
+                                            <center><button type="submit" class="btn btn-info">Volver al catálogo</button></center>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fin modal-->
+
+                    </form>
+                    
 
 
                     <ul>
