@@ -34,24 +34,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <% for(var i=0; i < carrito_compra.length; i++) { %>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="img/cart/carrito1.jpg" alt="">
-                                    <h5>Sertralina (Genfar)</h5>
+                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" alt="">
+                                    <h5><%= carrito_compra[i].nombre_prod %></h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    $10.32
+                                    <%= carrito_compra[i].precio_unitario %>
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                        1
+                                    <%= carrito_compra[i].cantidad %>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    $20.64
+                                    <%= carrito_compra[i].cantidad * carrito_compra[i].precio_unitario%>
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <span class="icon_close"></span>
                                 </td>
                             </tr>
+                            <% } %>
                             
                         </tbody>
                     </table>

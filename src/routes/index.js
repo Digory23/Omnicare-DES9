@@ -171,8 +171,8 @@ router.post('/Add-Producto', async (req, res) => {
     prod.usuario = req.user.email_user;
     prod.nombre_prod = req.body.nombre;
     prod.precio_unitario = req.body.precio;
-    prod.cantidad = req.body.cantidad
-
+    prod.cantidad = req.body.cantidad;
+    prod.imagen = req.body.imagen
     await prod.save();
     res.redirect('/Catalogo')
 
@@ -190,7 +190,11 @@ router.get('/Contacto', function (req, res) {
     });
 });
 
-router.get('/Compras', isLoggedIn, function (req, res) {
+router.get('/Compras', isLoggedIn, async (req, res)=> {
+    const carrito_compra = await carrito.find(
+        {usuario: req.user.email_user}
+    )
+    console.log(carrito_compra);
     var header
     if (req.isAuthenticated()) {
         header = 1
@@ -198,7 +202,8 @@ router.get('/Compras', isLoggedIn, function (req, res) {
     res.type('text/html');
     res.render('index', {
         page: 5,
-        header
+        header,
+        carrito_compra
     });
 });
 
