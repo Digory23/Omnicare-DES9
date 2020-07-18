@@ -147,14 +147,6 @@ router.get('/Analgesicos', function (req, res){
   //añadir productos al carrito AQUIIIIIIIIIIIIIIII NO TOCAR
   router.get('/Add-Producto/:codigo', async(req,res) =>{
     const prod = new carrito();
-<<<<<<< HEAD
-    prod.codigo_prod = req.params.codigo ;
-    prod.usuario = req.user.email_user ;
-    await prod.save();
-    req.flash('success_msg', 'Producto Agregado');
-    res.redirect('/Catalogo');
-  })
-=======
     prod.codigo_prod = req.params.codigo;
     prod.usuario = req.user.email_user;
     //prod.precio_unitario = req.params.nombre;
@@ -170,7 +162,6 @@ router.get('/Analgesicos', function (req, res){
         res.redirect('/Catalogo')
     
 });
->>>>>>> fae70e5299a351d766674632a8516dbfc3cddef9
 
 
 
