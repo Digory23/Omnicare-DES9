@@ -50,15 +50,17 @@
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" name="cantidad" value="1">
-                                    <input type="hidden" name="nombre" value="<%= prod.nombre_prod%>">
-                                    <input type="hidden" name="precio" value="<%= prod.precio_unitario%>">
-                                    <input type="hidden" name="codigo" value="<%= prod.codigo_prod%>">
+
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="primary-btn">Añadir al carrito</button>
+                        <input type="hidden" name="nombre" value="<%= prod.nombre_prod%>">
+                        <input type="hidden" name="precio" value="<%= prod.precio_unitario%>">
+                        <input type="hidden" name="codigo" value="<%= prod.codigo_prod%>">
+                        <input type="submit" class="primary-btn">Añadir al carrito</a>
+                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     </form>
-
+                    
 
 
                     <ul>
