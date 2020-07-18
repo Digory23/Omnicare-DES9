@@ -176,15 +176,9 @@ router.post('/Add-Producto', async (req, res) => {
     await prod.save();
     res.redirect('/Catalogo')
 
-<<<<<<< HEAD
-
-
-router.get('/Contacto', function(req, res){
-=======
 });
 
 router.get('/Contacto', function (req, res) {
->>>>>>> b0125cef50ebfbe13c06397bef8d7942b1dce91f
     var header
     if (req.isAuthenticated()) {
         header = 1
