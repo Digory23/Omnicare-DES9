@@ -24,27 +24,42 @@ router.get('shared/header-logged', function(req, res){
 
 //Rutas para cargar las paginas
 router.get('/', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     res.render('index', {
-        page:1
+        page:1,
+        header
     });
 });
 
 router.get('/Farmacia', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     res.render('index', {
-        page:2
+        page:2,
+        header
     });
 });
 
 router.get('/Catalogo', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({}, function(err, data){
         productos.countDocuments({}, function(err, count){
             res.render('index', {
                 page:3,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });
@@ -53,13 +68,18 @@ router.get('/Catalogo', function(req, res){
 //Rutas para las categorías de productos. Actualizan los productos a la categoria seleccionada
 //Analgésicos
 router.get('/Analgesicos', function (req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({tipo_prod: "analgésico"}, function(err, data){
         productos.find({tipo_prod: "analgésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });
@@ -67,13 +87,18 @@ router.get('/Analgesicos', function (req, res){
 
   //Anestésicos
   router.get('/Anestesicos', function (req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({tipo_prod: "anestésico"}, function(err, data){
         productos.find({tipo_prod: "anestésico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });
@@ -81,13 +106,18 @@ router.get('/Analgesicos', function (req, res){
 
   //Antiácidos
   router.get('/Antiacidos', function (req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({tipo_prod: "antiácido"}, function(err, data){
         productos.find({tipo_prod: "antiácido"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });
@@ -95,13 +125,18 @@ router.get('/Analgesicos', function (req, res){
 
   //Antibióticos
   router.get('/Antibioticos', function (req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({tipo_prod: "antibiótico"}, function(err, data){
         productos.find({tipo_prod: "antibiótico"}).count({}, function(err, count){    
             res.render('index', {
                 page:3,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });
@@ -119,26 +154,41 @@ router.get('/Analgesicos', function (req, res){
 
 
 router.get('/Contacto', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     res.render('index', {
-        page:4
+        page:4,
+        header
     });
 });
 
 router.get('/Compras', isLoggedIn, function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     res.render('index', {
-        page:5
+        page:5,
+        header
     });
 });
 
 router.get('/Detalle-Producto/:id', async (req, res)=> {
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     const prod = await productos.findById(req.params.id);
     console.log(prod)
     res.render('index', {
         page:6,
-        prod
+        prod,
+        header
     });
 });
 
@@ -156,33 +206,48 @@ router.get('/Detalle-Producto/:id', async (req, res)=> {
 
 
 router.get('/Checkout', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     res.render('index', {
-        page:7
+        page:7,
+        header
     });
 });
 
 router.get('/Blog', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     blog.find({}, function(err, data){
         blog.countDocuments({}, function(err, count){
             res.render('index', {
                 page:8,
                 posts: data,
-                cantposts: count
+                cantposts: count,
+                header
             });
         });
     });
 });
 
 router.get('/Ofertas', function(req, res){
+    var header
+    if (req.isAuthenticated()) {
+         header = 1
+    }
     res.type('text/html');
     productos.find({}, function(err, data){
         productos.countDocuments({}, function(err, count){
             res.render('index', {
                 page:9,
                 productos: data,
-                prodconteo: count
+                prodconteo: count,
+                header
             });
         });
     });

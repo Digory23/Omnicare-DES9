@@ -39,7 +39,15 @@
   </div>
 
   <!-- se incluye el header -->
-  <%- include ('shared/header-logged') %>
+  
+  <% switch(header) {
+    case 1: %>
+    <%- include ('shared/header-logged') %>
+    <% break
+    default: %>
+  <%- include ('shared/header') %>
+  <% break  } %>
+
 
   <!-- se incluye el contenido dependiendo de la opción del menú -->
   <% switch(page) {
