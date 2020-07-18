@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Require controller modules.
 var productoController = require('./../controllers/productoController');
+var flash = require('connect-flash');
 const productos = require('../models/productos');
 const blog = require('../models/blog');
 const carrito = require('../models/carrito');
