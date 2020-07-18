@@ -1,162 +1,169 @@
-
-
 <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="/img/payment.jpeg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Detalles de Producto</h2>
-                        <div class="breadcrumb__option">
-                            <a href="Farmacia">Farmacia</a>
-                            <a href="Catalogo">Catalogo</a>
-                            <span>Detalles de Producto</span>
-                        </div>
+<section class="breadcrumb-section set-bg" data-setbg="/img/payment.jpeg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Detalles de Producto</h2>
+                    <div class="breadcrumb__option">
+                        <a href="Farmacia">Farmacia</a>
+                        <a href="Catalogo">Catalogo</a>
+                        <span>Detalles de Producto</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
 
-    <!-- Product Details Section Begin -->
-    <section class="product-details spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="/img/productos-catalogo/<%= prod.img_prod%>" alt="">
-                        </div>
-                        
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                            src="/img/productos-catalogo/<%= prod.img_prod%>" alt="">
                     </div>
+
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3><%= prod.nombre_prod%></h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(Popularidad)</span>
-                        </div>
-                        <div class="product__details__price">$<%= prod.precio_unitario%></div>
-                        <p class="p1"><%= prod.desc_prod%></p>
-                        
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3><%= prod.nombre_prod%></h3>
+                    <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span>(Popularidad)</span>
+                    </div>
+                    <div class="product__details__price">$<%= prod.precio_unitario%></div>
+                    <p class="p1"><%= prod.desc_prod%></p>
+
+
+                    <form action="/Add-Producto" method="POST">
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" name="cantidad" value="1">
+                                    <input type="hidden" name="nombre" value="<%= prod.nombre_prod%>">
+                                    <input type="hidden" name="precio" value="<%= prod.precio_unitario%>">
+                                    <input type="hidden" name="codigo" value="<%= prod.codigo_prod%>">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Añadir al carrito</a>
+                        <input type="submit" class="primary-btn">Añadir al carrito</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        <ul>
-                            <li><b>Disponibilidad</b> <span><%= prod.cant_stock%> En Stock</span></li>
-                            <li><b>Envío</b> <span>1 día después de comprar</span></li>
-                            <li><b>Dosis</b> <span><%= prod.peso_prod%></span></li>
-                            <li><b>Compartir</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    </form>
+
+
+
+                    <ul>
+                        <li><b>Disponibilidad</b> <span><%= prod.cant_stock%> En Stock</span></li>
+                        <li><b>Envío</b> <span>1 día después de comprar</span></li>
+                        <li><b>Dosis</b> <span><%= prod.peso_prod%></span></li>
+                        <li><b>Compartir</b>
+                            <div class="share">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Descripción</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <p class="p1"> <%= prod.info_prod%> </p>
-                                       
-                                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                aria-selected="true">Descripción</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <p class="p1"> <%= prod.info_prod%> </p>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Product Details Section End -->
+    </div>
+</section>
+<!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
-    <section class="related-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title related__product__title">
-                        <h2>Productos Relacionados</h2>
+<!-- Related Product Section Begin -->
+<section class="related-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title related__product__title">
+                    <h2>Productos Relacionados</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="/img/product/producto1.jpg">
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Aleve PM (Bayer)</a></h6>
+                        <h5>$9.19</h5>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/img/product/producto1.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Aleve PM (Bayer)</a></h6>
-                            <h5>$9.19</h5>
-                        </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="/img/productos-catalogo/anestesico.anestil.jpg">
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Quimi-Anestil (Quimifar)</a></h6>
+                        <h5>$33.79</h5>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/img/productos-catalogo/anestesico.anestil.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Quimi-Anestil (Quimifar)</a></h6>
-                            <h5>$33.79</h5>
-                        </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="/img/product/producto3.jpg">
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Diclo-k (Diclofenaco Potasico)</a></h6>
+                        <h5>$11.60</h5>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/img/product/producto3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Diclo-k (Diclofenaco Potasico)</a></h6>
-                            <h5>$11.60</h5>
-                        </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="/img/product/producto4.jpg">
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/img/product/producto4.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Canker X (Gum)</a></h6>
-                            <h5>$8.38</h5>
-                        </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Canker X (Gum)</a></h6>
+                        <h5>$8.38</h5>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Related Product Section End -->
+    </div>
+</section>
+<!-- Related Product Section End -->
