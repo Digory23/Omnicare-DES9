@@ -8,18 +8,12 @@ const userSchema = new mongoose.Schema({
     pass_user: String,
     tipo_user: String,
     acceso: Boolean,
-    datos_paciente:{
-        tipo_sangre: String,
-        cedula: String,
-        telefono: String,
-        sexo: String
-    },
-    datos_doctor:{
-      cedula: String,
-      telefono: String,
-      sexo: String,
-      especialidad: String
-    }
+    tipo_sangre: String,
+    cedula: String,
+    direccion: String,
+    telefono: String,
+    sexo: String,
+    especialidad: String
 });
 
 userSchema.methods.generateHash = function (password) {

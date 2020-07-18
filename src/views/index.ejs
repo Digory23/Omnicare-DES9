@@ -38,8 +38,15 @@
     <div class="loader"></div>
   </div>
 
-  <%- include ('shared/header') %>
   <!-- se incluye el header -->
+  
+  <% switch(header) {
+    case 1: %>
+    <%- include ('shared/header-logged') %>
+    <% break
+    default: %>
+  <%- include ('shared/header') %>
+  <% break  } %>
 
 
   <!-- se incluye el contenido dependiendo de la opción del menú -->
