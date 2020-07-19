@@ -190,10 +190,20 @@ router.get('/Contacto', function (req, res) {
     });
 });
 
-router.get('/Compras', isLoggedIn, async (req, res)=> {
+router.get('/Compras', isLoggedIn, async (req, res) => {
     const carrito_compra = await carrito.find(
-        {usuario: req.user.email_user}
+        { usuario: req.user.email_user }
     )
+
+    /*var cantidad, sub_total, itbms, total
+    for (var i = 0; i < carrito_compra.length; i++) {
+        cantidad = cantidad + carrito_compra[i].cantidad
+        sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad
+    }
+
+    itbms = sub_total * 0.07
+    total = itbms + sub_total
+    itbms = 3*/
     console.log(carrito_compra);
     var header
     if (req.isAuthenticated()) {
