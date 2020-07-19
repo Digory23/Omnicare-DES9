@@ -55,7 +55,7 @@ module.exports = (app) => {
         res.type('text/html');
         let id = req.params;
         const solicitudcita= await Solicitud.findById(req.params.id);
-        const pac = await User.find({cedula:solicitudcita.ced_paciente});
+        const pac = await User.findOne({cedula:solicitudcita.ced_paciente});
         console.log(pac)
         res.render('index-paciente-doctor', {
             tipo_usuario: "3",
