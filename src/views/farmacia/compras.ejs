@@ -1,4 +1,3 @@
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/pills.jpg">
     <div class="container">
@@ -34,25 +33,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <% for(var i=0; i < carrito_compra.length; i++) { %>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="img/cart/carrito1.jpg" alt="">
-                                    <h5>Sertralina (Genfar)</h5>
+                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" alt="">
+                                    <h5><%= carrito_compra[i].nombre_prod %></h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    $10.32
+                                    <%= carrito_compra[i].precio_unitario %>
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                        1
+                                    <%= carrito_compra[i].cantidad %>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    $20.64
+                                    <%= carrito_compra[i].cantidad * carrito_compra[i].precio_unitario%>
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <span class="icon_close"></span>
                                 </td>
                             </tr>
-                            
+                            <% } %>
+
                         </tbody>
                     </table>
                 </div>
@@ -68,11 +69,28 @@
                 <div class="shoping__checkout">
                     <h5>Resumen del Pedido</h5>
                     <ul>
-                        <li>Cantidad de Productos  <span>3</span></li>
-                        <li>Subtotal <span>$159.00</span></li>
-                        <li>ITBMS <span>$10.48</span></li>
+                        
+                           <% var cantidad//, sub_total, itbms, total %>
+
+                            <% for(var i = 0; i < carrito_compra.length; i++) { 
+                               cantidad = cantidad + 1;
+                               //sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
+                            }
+//cantidad = carrito_compra.length
+                            //itbms = sub_total * 0.07 
+                            //total = itbms + sub_total   
+                            //cantidad = carrito_compra[1].precio_unitario
+                           %>
+                            
+                        
+
+                        <li>Cantidad de Productos <span> <%= cantidad %></span></li>
+                        <li>Subtotal <span><%= cantidad %> </span></li>
+                        <li>ITBMS <span>
+                                <script>document.write(itbms)</script> </span></li>
                         <li>Descuento <span>- $00.00</span></li>
-                        <li>Total <span>$169.48</span></li>
+                        <li>Total <span>
+                                <script>document.write(total)</script> </span></li>
                     </ul>
                     <a href="Checkout" class="primary-btn">TRAMITAR PEDIDO</a>
                 </div>

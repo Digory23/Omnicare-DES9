@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Require controller modules.
 var productoController = require('./../controllers/productoController');
+var flash = require('connect-flash');
 const productos = require('../models/productos');
 const blog = require('../models/blog');
 const carrito = require('../models/carrito');
@@ -170,8 +171,8 @@ router.post('/Add-Producto', async (req, res) => {
     prod.usuario = req.user.email_user;
     prod.nombre_prod = req.body.nombre;
     prod.precio_unitario = req.body.precio;
-    prod.cantidad = req.body.cantidad
-
+    prod.cantidad = req.body.cantidad;
+    prod.imagen = req.body.imagen
     await prod.save();
     res.redirect('/Catalogo')
 
@@ -189,7 +190,21 @@ router.get('/Contacto', function (req, res) {
     });
 });
 
-router.get('/Compras', isLoggedIn, function (req, res) {
+router.get('/Compras', isLoggedIn, async (req, res) => {
+    const carrito_compra = await carrito.find(
+        { usuario: req.user.email_user }
+    )
+
+    /*var cantidad, sub_total, itbms, total
+    for (var i = 0; i < carrito_compra.length; i++) {
+        cantidad = cantidad + carrito_compra[i].cantidad
+        sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad
+    }
+
+    itbms = sub_total * 0.07
+    total = itbms + sub_total
+    itbms = 3*/
+    console.log(carrito_compra);
     var header
     if (req.isAuthenticated()) {
         header = 1
@@ -197,7 +212,8 @@ router.get('/Compras', isLoggedIn, function (req, res) {
     res.type('text/html');
     res.render('index', {
         page: 5,
-        header
+        header,
+        carrito_compra
     });
 });
 
