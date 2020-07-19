@@ -36,7 +36,7 @@
                             <% for(var i=0; i < carrito_compra.length; i++) { %>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" alt="">
+                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" width="25%"alt="">
                                     <h5><%= carrito_compra[i].nombre_prod %></h5>
                                 </td>
                                 <td class="shoping__cart__price">
@@ -49,7 +49,7 @@
                                     <%= carrito_compra[i].cantidad * carrito_compra[i].precio_unitario%>
                                 </td>
                                 <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
+                                        <a class="icon_close" href="/delete/<%=carrito_compra[i]._id %>"></a>
                                 </td>
                             </tr>
                             <% } %>
@@ -79,7 +79,9 @@
 
                             
                             itbms = sub_total * 0.07 
-                            total = itbms + sub_total   
+                            total = itbms + sub_total  
+                            itbms = itbms.toFixed(2)
+                            total= total.toFixed(2)
                             
                            %>
                             
