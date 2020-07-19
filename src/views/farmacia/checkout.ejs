@@ -86,12 +86,27 @@
                                     <li>Quimi-Anestil (Quimifar) <span>$151.99</span></li>
                                     <li>Diclo-k (Diclofenaco Potasico) <span>$53.99</span></li>
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
+
+                                <% var cantidad = 0, sub_total = 0, itbms = 0, total = 0 %>
+
+                                <% for(var i = 0; i < carrito_compra.length; i++) { 
+                                   cantidad = cantidad + carrito_compra[i].cantidad
+                                   sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
+                                }
+    
+                                
+                                itbms = sub_total * 0.07 
+                                total = itbms + sub_total   
+                                
+                               %>
+
+
+                                <div class="checkout__order__subtotal">Subtotal <span><%= sub_total %></span></div>
+                                <div class="checkout__order__total">Total <span><%= total %></span></div>
                                 <p class="p1">Método de Pago</p>
 
                                         <div class="checkout__input__checkbox">
-                                        <div id="paypal-button-container"><%= precio = 750 %></div></div>
+                                        <div id="paypal-button-container"></div></div>
                                         
                                         <script src="https://www.paypal.com/sdk/js?client-id=AcmZn7_1OhgRaLczK4dVYwfs9MqksQTbrmtn--JxfqKj6gyYtob6VMxeFYVSjgYaG0EMhqCKY_UATFFk&currency=USD" data-sdk-integration-source="button-factory"></script>
 
@@ -131,6 +146,7 @@
       }
   }).render('#paypal-button-container');
 </script>
+
     <!-- Checkout Section End -->
     <!--
     Cuenta de negocios OnmiCare
