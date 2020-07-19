@@ -1,4 +1,7 @@
 module.exports = (app) => {
+    const express = require('express');
+    const router = express.Router();
+
     const Solicitud = require('../models/solicitud_cita')
     const User = require('../models/user');
 
@@ -29,7 +32,7 @@ module.exports = (app) => {
         const solicitud = await Solicitud.find(
             {doctor: req.user.nombre_user}
         )
-        console.log(solicitud);
+        //console.log(solicitud);
         res.render('index-paciente-doctor', {
             solicitud,
             user: req.user,
@@ -48,11 +51,17 @@ module.exports = (app) => {
 
 
     //vista de agendar citas del doctor
-    app.get('/AgendarCita', function (req, res) {
+    app.get('/AgendarCita/:id', async (req, res) => {
         res.type('text/html');
+        let id = req.params;
+        const solicitudcita= await Solicitud.findById(req.params.id);
+        const pac = await User.find({cedula:solicitudcita.ced_paciente});
+        console.log(pac)
         res.render('index-paciente-doctor', {
             tipo_usuario: "3",
-            user: req.user
+            user: req.user,
+            solicitudcita,
+            pac
         });
     });
 
