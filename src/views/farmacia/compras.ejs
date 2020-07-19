@@ -36,7 +36,7 @@
                             <% for(var i=0; i < carrito_compra.length; i++) { %>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" alt="">
+                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" width="25%"alt="">
                                     <h5><%= carrito_compra[i].nombre_prod %></h5>
                                 </td>
                                 <td class="shoping__cart__price">
@@ -49,7 +49,7 @@
                                     <%= carrito_compra[i].cantidad * carrito_compra[i].precio_unitario%>
                                 </td>
                                 <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
+                                        <a class="icon_close" href="/delete/<%=carrito_compra[i]._id %>"></a>
                                 </td>
                             </tr>
                             <% } %>
@@ -70,27 +70,27 @@
                     <h5>Resumen del Pedido</h5>
                     <ul>
                         
-                           <% var cantidad//, sub_total, itbms, total %>
+                           <% var cantidad = 0, sub_total = 0, itbms = 0, total = 0 %>
 
                             <% for(var i = 0; i < carrito_compra.length; i++) { 
-                               cantidad = cantidad + 1;
-                               //sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
+                               cantidad = cantidad + carrito_compra[i].cantidad
+                               sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
                             }
-//cantidad = carrito_compra.length
-                            //itbms = sub_total * 0.07 
-                            //total = itbms + sub_total   
-                            //cantidad = carrito_compra[1].precio_unitario
+
+                            
+                            itbms = sub_total * 0.07 
+                            total = itbms + sub_total  
+                            itbms = itbms.toFixed(2)
+                            total= total.toFixed(2)
+                            
                            %>
                             
-                        
 
                         <li>Cantidad de Productos <span> <%= cantidad %></span></li>
-                        <li>Subtotal <span><%= cantidad %> </span></li>
-                        <li>ITBMS <span>
-                                <script>document.write(itbms)</script> </span></li>
+                        <li>Subtotal <span><%= sub_total %> </span></li>
+                        <li>ITBMS <span> <%= itbms %> </span></li>
                         <li>Descuento <span>- $00.00</span></li>
-                        <li>Total <span>
-                                <script>document.write(total)</script> </span></li>
+                        <li>Total <span><%= total %> </span></li>
                     </ul>
                     <a href="Checkout" class="primary-btn">TRAMITAR PEDIDO</a>
                 </div>

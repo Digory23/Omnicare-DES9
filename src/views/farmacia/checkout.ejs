@@ -86,17 +86,33 @@
                                     <li>Quimi-Anestil (Quimifar) <span>$151.99</span></li>
                                     <li>Diclo-k (Diclofenaco Potasico) <span>$53.99</span></li>
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span><%=precio_total = 100 %></span></div>
+
+                                <% var cantidad = 0, sub_total = 0, itbms = 0, total = 0 %>
+
+                                <% for(var i = 0; i < carrito_compra.length; i++) { 
+                                   cantidad = cantidad + carrito_compra[i].cantidad
+                                   sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
+                                }
+    
+                                
+                                itbms = sub_total * 0.07 
+                                total = itbms + sub_total   
+                                itbms = itbms.toFixed(2)
+                                total= total.toFixed(2)
+                               %>
+
+
+                                <div class="checkout__order__subtotal">Subtotal <span><%= sub_total %></span></div>
+                                <div class="checkout__order__total">Total <span><%= total %></span></div>
                                 <p class="p1">Método de Pago</p>
 
                                         <div class="checkout__input__checkbox">
-                                        <div id="paypal-button-container"><%= precio = 750 %></div></div>
+                                        <div id="paypal-button-container"></div></div>
                                         
                                         <script src="https://www.paypal.com/sdk/js?client-id=AcmZn7_1OhgRaLczK4dVYwfs9MqksQTbrmtn--JxfqKj6gyYtob6VMxeFYVSjgYaG0EMhqCKY_UATFFk&currency=USD" data-sdk-integration-source="button-factory"></script>
 
 
-                                        
+                                     <input type="hidden" id = "amount" value="<%= total %>" >  
                                 <button type="submit" class="site-btn">Confirmar</button>
                             </div>
                         </div>
@@ -107,6 +123,8 @@
     </section>
 
 <script>
+
+  var amount = document.getElementById("amount").value;
   paypal.Buttons({
       style: {
           shape: 'rect',
@@ -119,18 +137,25 @@
           return actions.order.create({
               purchase_units: [{
                   amount: {
+<<<<<<< HEAD
                       value: '1000'
+=======
+                      value: amount
+>>>>>>> 4802a35082419f4c51c4089f2071bf50e125932c
                   }
               }]
           });
       },
       onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
+
+              console.log("result",details)
               alert('Transaction completed by ' + details.payer.name.given_name + '!');
           });
       }
   }).render('#paypal-button-container');
 </script>
+
     <!-- Checkout Section End -->
     <!--
     Cuenta de negocios OnmiCare

@@ -194,16 +194,7 @@ router.get('/Compras', isLoggedIn, async (req, res) => {
     const carrito_compra = await carrito.find(
         { usuario: req.user.email_user }
     )
-
-    /*var cantidad, sub_total, itbms, total
-    for (var i = 0; i < carrito_compra.length; i++) {
-        cantidad = cantidad + carrito_compra[i].cantidad
-        sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad
-    }
-
-    itbms = sub_total * 0.07
-    total = itbms + sub_total
-    itbms = 3*/
+    
     console.log(carrito_compra);
     var header
     if (req.isAuthenticated()) {
@@ -213,9 +204,15 @@ router.get('/Compras', isLoggedIn, async (req, res) => {
     res.render('index', {
         page: 5,
         header,
-        carrito_compra
+        carrito_compra  
     });
 });
+
+router.get('/delete/:id', async (req, res, next) => {
+    let { id } = req.params;
+    await carrito.remove({_id: id});
+    res.redirect('/Compras');
+  });
 
 router.get('/Detalle-Producto/:id', async (req, res) => {
     var header
@@ -245,7 +242,11 @@ router.get('/Detalle-Producto/:id', async (req, res) => {
 
 
 
-router.get('/Checkout', function (req, res) {
+router.get('/Checkout', async (req, res)=> {
+    const carrito_compra = await carrito.find(
+        { usuario: req.user.email_user }
+    )
+
     var header
     if (req.isAuthenticated()) {
         header = 1
@@ -253,7 +254,8 @@ router.get('/Checkout', function (req, res) {
     res.type('text/html');
     res.render('index', {
         page: 7,
-        header
+        header,
+        carrito_compra
     });
 });
 
