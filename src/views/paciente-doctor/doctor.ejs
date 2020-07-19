@@ -73,7 +73,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Solicitudes de citas:</h3>
-                        <a href="../paciente-doctor/AgendarCita.html" class="btn btn-dark">Agendar una cita</a>
+                        <a href="#" class="btn btn-dark">Agendar una cita</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
@@ -93,7 +93,7 @@
                                     <td><%= i + 1%></td>
                                     <td><%= solicitud[i].paciente %></td>
                                     <td><%= solicitud[i].razon %></td>
-                                    <td><button type="button" class="btn btn-info">Ver informacion</button></td>
+                                    <td><a class="btn btn-info" href="/AgendarCita/<%=solicitud[i]._id%>">Agendar Cita</a></td>
                                 </tr>
                                 <% } %>
                             </tbody>

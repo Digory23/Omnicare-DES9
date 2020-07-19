@@ -32,25 +32,25 @@
                   alt="User profile picture">
             </div>
             <p class="text-muted text-center">Foto de Paciente</p>
-            <h3 class="profile-username text-center">Nina Mcintire</h3>
+            <h3 class="profile-username text-center"><%=pac.nombre_user%> <%=pac.apellido_user%></h3>
 
             <p class="text-muted text-center">Nombre de Paciente</p>
 
             <ul class="list-group list-group-unbordered mb-3">
               <li class="list-group-item">
-                <b>Cédula</b> <a class="float-right">8-888-8888</a>
+                <b>Cédula</b> <label class="float-right"><%=pac.cedula%></label>
               </li>
               <li class="list-group-item">
-                <b>Teléfono</b> <a class="float-right">111-1111</a>
+                <b>Teléfono</b> <a class="float-right"><%=pac.telefono%></a>
               </li>
               <li class="list-group-item">
-                <b>Sexo</b> <a class="float-right">Femenino</a>
+                <b>Sexo</b> <a class="float-right"><%=pac.sexo%></a>
               </li>
               <li class="list-group-item">
-                <b>Tipo de Sangre</b> <a class="float-right">O+</a>
+                <b>Tipo de Sangre</b> <a class="float-right"><%=pac.tipo_sangre%></a>
               </li>
               <li class="list-group-item">
-                <b>Email</b> <a class="float-right">nombre@email.com</a>
+                <b>Email</b> <a class="float-right"><%=pac.email_user%></a>
               </li>
             </ul>
           </div>
@@ -165,14 +165,7 @@
             
             <dl class="row" style="margin-top: 20px;">
               <dt class="col-sm-4">Motivo de la cita</dt>
-              <dd class="col-sm-8">Dolores fuertes en el área del pecho.</dd><hr>
-              <dt class="col-sm-4">Número de Seguro</dt>
-              <dd class="col-sm-8">888888</dd>
-              <dt class="col-sm-4">Doctor Solicitado</dt>
-              <dd class="col-sm-8">Manuel López</dd>
-              <!--<dd class="col-sm-8 offset-sm-4">Donec id elit non mi porta gravida at eget metus.</dd>-->
-              <dt class="col-sm-4">Especialidad</dt>
-              <dd class="col-sm-8">Cardiología</dd>
+              <dd class="col-sm-8"><%=solicitudcita.razon%></dd><hr>
             </dl>
          </div><br>
          <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
