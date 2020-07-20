@@ -622,11 +622,7 @@ ol {
 	position: absolute;
 	right: 18px;
 	top: 9px;
-<<<<<<< HEAD
-	content: "";
-=======
 	content: "3";
->>>>>>> 14f91508cf46f1426f0ec12aee18715aefdb81f0
 	font-family: "ElegantIcons";
 	font-size: 18px;
 	color: #ffffff;
@@ -3003,7 +2999,7 @@ max-width: 100%;
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #1c1c1c;
+		/*border: 1px solid #1c1c1c;*/
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
@@ -3011,6 +3007,9 @@ max-width: 100%;
 	}
 	.header .container {
 		position: relative;
+	}
+	.header__top__right__auth a{
+		font-size: 16px !important;
 	}
 	.humberger__menu__wrapper {
 		width: 300px;
@@ -3178,6 +3177,9 @@ max-width: 100%;
 		text-align: center;
 		padding: 10px 0 24px;
 	}
+	.header__logo img{
+		max-width: 90%;
+	}
 	.over_hid {
 		overflow: hidden;
 	}
@@ -3261,7 +3263,7 @@ max-width: 100%;
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #1c1c1c;
+		/*border: 1px solid #1c1c1c;*/
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
@@ -3301,6 +3303,12 @@ max-width: 100%;
 	}
 	.humberger__menu__contact {
 		padding: 10px 0 13px;
+	}
+	.header__top__right__auth a{
+		font-size: 16px !important;
+	}
+	.header__logo img{
+		max-width: 90%;
 	}
 	.humberger__menu__contact ul li {
 		font-size: 14px;
