@@ -28,7 +28,7 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-                  src="../img/patient1.png"
+                  src="../img/bien4k.jpg"
                   alt="User profile picture">
             </div>
             <p class="text-muted text-center">Foto de Paciente</p>
@@ -51,6 +51,9 @@
               </li>
               <li class="list-group-item">
                 <b>Email</b> <a class="float-right"><%=pac.email_user%></a>
+              </li>
+              <li class="list-group-item">
+                <b>Motivo de Cita</b> <a class="float-right"><%=solicitudcita.razon%></a>
               </li>
             </ul>
           </div>
@@ -136,7 +139,8 @@
                 </div>
                 <!-- /.form group -->
               </div>
-              <a href="#" class="btn btn-primary btn-block"><b>Verificar disponibilidad</b></a>
+              <br><br>
+              <a href="#" class="btn btn-primary btn-block"><b>Agendar Cita</b></a>
             </div>
               <!--<div class="card-footer">
               </div>-->
@@ -149,29 +153,6 @@
       </div>
       <!-- /.row -->
       
-      <div class="card card-default">
-        <div class="card-header">
-          <h3 class="card-title">Datos enviados por el paciente</h3>
+    
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <img src="../img/medicon.png" alt="hora" width="200" height="200" class="float-left">
-          <div class="row">
-            
-            <dl class="row" style="margin-top: 20px;">
-              <dt class="col-sm-4">Motivo de la cita</dt>
-              <dd class="col-sm-8"><%=solicitudcita.razon%></dd><hr>
-            </dl>
-         </div><br>
-         <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-          Agendar Cita
-        </button></center>
-          <!-- /.row -->
-        </div>
-        <!-- /.card-body -->
-      </div>
+      
