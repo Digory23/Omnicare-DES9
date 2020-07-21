@@ -33,9 +33,15 @@ module.exports = (app) => {
         const solicitud = await Solicitud.find(
             {doctor: req.user.nombre_user}
         )
-        //console.log(solicitud);
+        const citas = await Cita.find(
+            {doctor: req.user.email_user}
+        )
+
+        
+        console.log(citas);
         res.render('index-paciente-doctor', {
             solicitud,
+            citas,
             user: req.user,
             tipo_usuario: "2"
         });
