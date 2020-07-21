@@ -28,7 +28,7 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-                  src="../img/patient1.png"
+                  src="../img/user.png"
                   alt="User profile picture">
             </div>
             <p class="text-muted text-center">Foto de Paciente</p>
@@ -38,7 +38,7 @@
 
             <ul class="list-group list-group-unbordered mb-3">
               <li class="list-group-item">
-                <b>Cédula</b> <label class="float-right"><%=pac.cedula%></label>
+                <b>Cédula</b> <a class="float-right"><%=pac.cedula%></a>
               </li>
               <li class="list-group-item">
                 <b>Teléfono</b> <a class="float-right"><%=pac.telefono%></a>
@@ -51,6 +51,16 @@
               </li>
               <li class="list-group-item">
                 <b>Email</b> <a class="float-right"><%=pac.email_user%></a>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-7">
+                    <b>Motivo de Cita</b> 
+                  </div>
+                  <div class="col-md-5">
+                    <a class="float-right"><%=solicitudcita.razon%></a>
+                  </div>
+               </div>
               </li>
             </ul>
           </div>
@@ -73,7 +83,7 @@
             <div class="card-body">
               <!-- Date -->
               <style>
-                .center {
+              .center {
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
@@ -108,8 +118,8 @@
                 }*/
               </style>
 
-              <div class="form-group">
-                <img src="../img/datetime.png" alt="hora" width="200" height="200" class="center">
+              <form action=" " class="form-group" method="post">
+                <img class="center" src="../img/datetime.png" alt="hora" width="200" height="200" >
                 <label>Seleccione la fecha en la que desea asignar la cita y verifique su disponibilidad.</label><br>
                 <label>Fecha:</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
@@ -118,10 +128,7 @@
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
                   </div>
-              </div>
-              <!-- /.form group -->
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
+                <div class="bootstrap-timepicker">
                   <label>Seleccione la hora en la que desea agendar la cita:</label><br>
                   <label>Hora:</label>
 
@@ -130,48 +137,43 @@
                     <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="far fa-clock"></i></div>
                     </div>
-                    </div>
-                  <!-- /.input group -->
-                  
+                  </div>
                 </div>
-                <!-- /.form group -->
-              </div>
-              <a href="#" class="btn btn-primary btn-block"><b>Verificar disponibilidad</b></a>
-            </div>
-              <!--<div class="card-footer">
-              </div>-->
+                <br><br>
+                <button type="button" class="btn btn-primary btn-block" data-target="#exampleModal2" data-toggle="modal"><b>Agendar Cita</b></button>
+            
+                <!--modal-->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">¡Cita agendada exitosamente!</h5>
+                          </div>
 
-            <!-- /.card-body -->
+                          <div class="modal-body">
+                              <center><img src="/img/check2.png" style="width: 220px !important;" alt=""></center>
+                              <center><p>Debe comunicarse con el paciente a través del correo electrónico proporcionado o su número de teléfono para recordarle su cita.</p></center>
+
+                              <center><button type="submit" class="btn btn-info">Cerrar</button></center>
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <!--fin modal-->
+            
+            </form>
+            <!-- /.form group -->
           </div>
           <!-- /.card -->
         </div>
         <!-- /.col (right) -->
       </div>
       <!-- /.row -->
-      
-      <div class="card card-default">
-        <div class="card-header">
-          <h3 class="card-title">Datos enviados por el paciente</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <img src="../img/medicon.png" alt="hora" width="200" height="200" class="float-left">
-          <div class="row">
-            
-            <dl class="row" style="margin-top: 20px;">
-              <dt class="col-sm-4">Motivo de la cita</dt>
-              <dd class="col-sm-8"><%=solicitudcita.razon%></dd><hr>
-            </dl>
-         </div><br>
-         <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-          Agendar Cita
-        </button></center>
-          <!-- /.row -->
-        </div>
-        <!-- /.card-body -->
       </div>
+    </section>
+      
+    
+
+      
