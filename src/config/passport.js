@@ -50,6 +50,7 @@ module.exports = function (passport) {
         newUser.direccion = " ";
         newUser.telefono = " ";
         newUser.sexo = " ";
+        newUser.img_user = " ";
         newUser.save(function (err) {
           if (err) { throw err; }
           return done(null, newUser);
