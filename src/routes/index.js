@@ -7,21 +7,7 @@ const productos = require('../models/productos');
 const blog = require('../models/blog');
 const carrito = require('../models/carrito');
 
-//prueba para headers - update: no sirvió xd
-/*router.get('shared/header', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        header:1
-    });
-});
 
-router.get('shared/header-logged', function(req, res){
-    if(isLoggedIn){
-    res.type('text/html');
-    res.render('index', {
-        header:2
-    });}
-});*/
 
 //Rutas para cargar las paginas
 router.get('/', function (req, res) {
@@ -144,12 +130,11 @@ router.get('/Antibioticos', function (req, res) {
 });
 
 
-//añadir productos al carrito AQUIIIIIIIIIIIIIIII NO TOCAR
-router.get('/Add-Producto/:codigo', async (req, res) => {
+//añadir productos al carrito 
+/*router.get('/Add-Producto/:codigo', async (req, res) => {
     const prod = new carrito();
     prod.codigo_prod = req.params.codigo;
     prod.usuario = req.user.email_user;
-    //prod.precio_unitario = req.params.nombre;
 
     const producto = await productos.findOne(
         { codigo_prod: req.params.codigo }
@@ -162,10 +147,10 @@ router.get('/Add-Producto/:codigo', async (req, res) => {
     await prod.save();
     res.redirect('/Catalogo')
 
-});
+});*/
 
 //añadir productos al carrito
-router.post('/Add-Producto', async (req, res) => {
+router.post('/Add-Producto', isLoggedIn, async (req, res) => {
     const prod = new carrito();
     prod.codigo_prod = req.body.codigo;
     prod.usuario = req.user.email_user;
@@ -242,7 +227,7 @@ router.get('/Detalle-Producto/:id', async (req, res) => {
 
 
 
-router.get('/Checkout', async (req, res)=> {
+router.get('/Checkout',isLoggedIn, async (req, res)=> {
     const carrito_compra = await carrito.find(
         { usuario: req.user.email_user }
     )
@@ -295,15 +280,7 @@ router.get('/Ofertas', function (req, res) {
     });
 });
 
-/*
-router.get('/Paciente', function(req, res){
-    res.type('text/html');
-    res.render('paciente-doctor/login', {
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});*/
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
