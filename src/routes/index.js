@@ -131,7 +131,7 @@ router.get('/Antibioticos', function (req, res) {
 
 
 //añadir productos al carrito 
-/*router.get('/Add-Producto/:codigo', async (req, res) => {
+router.get('/Add-Producto/:codigo', async (req, res) => {
     const prod = new carrito();
     prod.codigo_prod = req.params.codigo;
     prod.usuario = req.user.email_user;
@@ -147,7 +147,7 @@ router.get('/Antibioticos', function (req, res) {
     await prod.save();
     res.redirect('/Catalogo')
 
-});*/
+});
 
 //añadir productos al carrito
 router.post('/Add-Producto', isLoggedIn, async (req, res) => {
@@ -214,20 +214,9 @@ router.get('/Detalle-Producto/:id', async (req, res) => {
     });
 });
 
-/* router.get('/Detalle-Producto/:id', async (req, res, next)=> {
-    res.type('text/html');
-    await productos.findById(req.params.id);
-    console.log(prod)
-    res.render('index', {
-        page:6,
-        prod: data
-    });
-});
- */
 
 
-
-router.get('/Checkout',isLoggedIn, async (req, res)=> {
+router.get('/Checkout', isLoggedIn, async (req, res)=> {
     const carrito_compra = await carrito.find(
         { usuario: req.user.email_user }
     )

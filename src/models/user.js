@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     direccion: String,
     telefono: String,
     sexo: String,
+    img_user: String,
     especialidad: String
 });
 

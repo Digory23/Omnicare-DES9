@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
         res.render('paciente-doctor/num-referencia');
     });
 
-    app.post('/Verificacion', async (req, res) => {
+    app.post('/Verificacion', isLoggedIn, async (req, res) => {
         
         /*const reference = await Referencia.find(
            {numero: req.body.numero}
@@ -30,13 +30,13 @@ module.exports = (app, passport) => {
     });
 
     //ruta de solicitud de datos del paciente para mostrar en dashboard
-    app.get('/Datos-Paciente', (req, res) => {
+    app.get('/Datos-Paciente',isLoggedIn, (req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/datos-paciente');
     });
 
 
-       //aqui se supone que deberia funcionanr esta MIERDA
+       //esta ruta inserta los datos del paciente
         app.post('/Datos-Paciente', async (req, res, next) => {
         const email = req.user.email_user;
         const tipo_san =  req.body.tipo_sangre;
@@ -44,6 +44,7 @@ module.exports = (app, passport) => {
         const dir = req.body.direccion;
         const tel = req.body.telefono;
         const sex = req.body.sexo;
+        const img = "patient1.png";
         console.log(email)
         await User.update({email_user: email},
             {
@@ -55,25 +56,14 @@ module.exports = (app, passport) => {
                     cedula: ced,
                     direccion: dir,
                     telefono: tel,
-                    sexo: sex
+                    sexo: sex,
+                    img_user: img
                 }
             })
             res.redirect('/');
         });
 
-    /*app.put("/usuarios/:id", async (req, res) => {
-        const id = req.params.id;
-        const updated = req.body;
-        try {
-          await User.findByIdAndUpdate(id,updated).exec();
-          res.send("actualizado correctamente");
-        } catch (error) {
-          console.log(`error actualizando paciente ${error}`);
-          res.json({});
-        }
-      });*/
-
-
+    
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
     app.post('/Login', passport.authenticate('user-login', {
 

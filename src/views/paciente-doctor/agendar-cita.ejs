@@ -28,7 +28,7 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-                  src="../img/patient1.png"
+                  src="../img/user.png"
                   alt="User profile picture">
             </div>
             <p class="text-muted text-center">Foto de Paciente</p>
@@ -118,12 +118,16 @@
                 }*/
               </style>
 
-              <form action=" " class="form-group" method="post">
+              <form action="/AgendarCita" class="form-group" method="post">
+                <input type="hidden" name="nombre_pac" value="<%=pac.nombre_user%>"/>
+                <input type="hidden" name="apellido_pac" value="<%=pac.apellido_user%>"/>
+                <input type="hidden" name="motivo" value="<%=solicitudcita.razon%>"/>
+                <input type="hidden" name="email_pac" value= "<%=pac.email_user%>"/>
                 <img class="center" src="../img/datetime.png" alt="hora" width="200" height="200" >
                 <label>Seleccione la fecha en la que desea asignar la cita y verifique su disponibilidad.</label><br>
                 <label>Fecha:</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <input type="text" name="fecha" class="form-control datetimepicker-input" data-target="#reservationdate"/>
                       <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -133,14 +137,36 @@
                   <label>Hora:</label>
 
                   <div class="input-group date" id="timepicker" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker"/>
+                    <input type="text" name= "hora" class="form-control datetimepicker-input" data-target="#timepicker"/>
                     <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="far fa-clock"></i></div>
                     </div>
                   </div>
                 </div>
                 <br><br>
-                <button type="submit" class="btn btn-primary btn-block"><b>Agendar Cita</b></button>
+                <button type="button" class="btn btn-primary btn-block" data-target="#exampleModal2" data-toggle="modal"><b>Agendar Cita</b></button>
+            
+                <!--modal-->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">¡Cita agendada exitosamente!</h5>
+                          </div>
+
+                          <div class="modal-body">
+                              <center><img src="/img/check2.png" style="width: 220px !important;" alt=""></center>
+                              <center><p>Debe comunicarse con el paciente a través del correo electrónico proporcionado o su número de teléfono para recordarle su cita.</p></center>
+
+                              <center><button type="submit" class="btn btn-info">Cerrar</button></center>
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <!--fin modal-->
+            
             </form>
             <!-- /.form group -->
           </div>

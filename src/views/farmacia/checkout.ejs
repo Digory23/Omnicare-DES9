@@ -80,12 +80,9 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Tu Pedido</h4>
-                                <div class="checkout__order__products">Productos <span>Total</span></div>
-                                <ul>
-                                    <li>Aleve PM (Bayer) <span>$75.99</span></li>
-                                    <li>Quimi-Anestil (Quimifar) <span>$151.99</span></li>
-                                    <li>Diclo-k (Diclofenaco Potasico) <span>$53.99</span></li>
-                                </ul>
+
+                                
+                                
 
                                 <% var cantidad = 0, sub_total = 0, itbms = 0, total = 0 %>
 
@@ -101,7 +98,7 @@
                                 total= total.toFixed(2)
                                %>
 
-
+                               <div class="checkout__order__products">Cantidad de productos <span><%= cantidad %></span></div>
                                 <div class="checkout__order__subtotal">Subtotal <span><%= sub_total %></span></div>
                                 <div class="checkout__order__total">Total <span><%= total %></span></div>
                                 <p class="p1">Método de Pago</p>
@@ -113,7 +110,7 @@
 
 
                                      <input type="hidden" id = "amount" value="<%= total %>" >  
-                                <button type="submit" class="site-btn">Confirmar</button>
+                                
                             </div>
                         </div>
                     </div>
