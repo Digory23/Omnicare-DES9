@@ -18,10 +18,15 @@ module.exports = (app) => {
         const doctores = await User.find(
             {tipo_user : "2"}
         )
+
+        const citas = await Cita.find(
+            {email_pac: req.user.email_user}
+        )
         res.render('index-paciente-doctor', {
            user: req.user,
            tipo_usuario: "1",
-           doctores
+           doctores,
+           citas
         });
     });
 
@@ -76,6 +81,7 @@ module.exports = (app) => {
     app.post('/AgendarCita', async(req,res)=>{
         const citas = new Cita(req.body);
         citas.doctor = req.user.email_user;
+        citas.nombre_doctor = req.user.nombre_user;
         console.log(citas)
         await citas.save();
         res.redirect('/Perfil-Doctor');
