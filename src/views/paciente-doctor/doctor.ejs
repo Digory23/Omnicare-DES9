@@ -73,7 +73,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Solicitudes de citas:</h3>
-                        <a href="#" class="btn btn-dark">Agendar una cita</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
@@ -93,7 +92,7 @@
                                     <td><%= i + 1%></td>
                                     <td><%= solicitud[i].paciente %></td>
                                     <td><%= solicitud[i].razon %></td>
-                                    <td><a class="btn btn-info" href="/AgendarCita/<%=solicitud[i]._id%>">Agendar Cita</a></td>
+                                    <td><a class="btn btn-info" style="margin: 5px 0px 5px 0px; font-size: 15px;"href="/AgendarCita/<%=solicitud[i]._id%>">Agendar Cita</a></td>
                                 </tr>
                                 <% } %>
                             </tbody>
@@ -122,7 +121,6 @@
                                     <th>Hora</th>
                                     <th>Paciente</th>
                                     <th>Motivo de cita</th>
-                                    <th></th>
                                 </tr>
                             </thead>
 
@@ -133,7 +131,6 @@
                                     </td>
                                     <td>Nathalie Acevedo</td>
                                     <td>Solicitud de receta</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
 
                                 <tr>
@@ -141,7 +138,6 @@
                                     <td>4:00 p.m.</td>
                                     <td>Daniel Diaz</td>
                                     <td>Dolor de Cabeza</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
 
 
@@ -151,7 +147,6 @@
                                     </td>
                                     <td>Nathalie Acevedo</td>
                                     <td>Vómitos</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
 
                                 <tr>
@@ -160,7 +155,6 @@
                                     </td>
                                     <td>Daniel Diaz</td>
                                     <td>Mareos</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
                                 <tr>
                                     <td>22/5/2020</td>
@@ -168,7 +162,6 @@
                                     </td>
                                     <td>Diana Garcia</td>
                                     <td>Migrañas</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
 
                                 <tr>
@@ -176,19 +169,9 @@
                                     <td>4:00 p.m.</td>
                                     <td>Daniel Diaz</td>
                                     <td>Solicitud de medicamentos</td>
-                                    <td><button type="button" class="btn btn-info">Ver cita</button></td>
                                 </tr>
 
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
-                                    <th>Paciente</th>
-                                    <th>Motivo de cita</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
