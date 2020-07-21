@@ -4,6 +4,7 @@ module.exports = (app) => {
 
     const Solicitud = require('../models/solicitud_cita')
     const User = require('../models/user');
+    const Cita = require('../models/cita');
 
     //esta ruta valida el tipo de usuario (funcion tipo user)
     app.get('/Perfil-Validate', isLoggedIn, IsPaciente, TipoUser, async (req, res) => {
@@ -63,6 +64,15 @@ module.exports = (app) => {
             solicitudcita,
             pac
         });
+    });
+
+    //agendar cita en la vista de doctor
+    app.post('/AgendarCita', async(req,res)=>{
+        const citas = new Cita(req.body);
+        citas.doctor = req.user.email_user;
+        console.log(citas)
+        await citas.save();
+        res.redirect('/Perfil-Doctor');
     });
 
 
