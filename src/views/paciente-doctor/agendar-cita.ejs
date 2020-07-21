@@ -28,7 +28,7 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-                  src="../img/patient1.png"
+                  src="../img/user.png"
                   alt="User profile picture">
             </div>
             <p class="text-muted text-center">Foto de Paciente</p>
@@ -140,7 +140,29 @@
                   </div>
                 </div>
                 <br><br>
-                <button type="submit" class="btn btn-primary btn-block"><b>Agendar Cita</b></button>
+                <button type="button" class="btn btn-primary btn-block" data-target="#exampleModal2" data-toggle="modal"><b>Agendar Cita</b></button>
+            
+                <!--modal-->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">¡Cita agendada exitosamente!</h5>
+                          </div>
+
+                          <div class="modal-body">
+                              <center><img src="/img/check2.png" style="width: 220px !important;" alt=""></center>
+                              <center><p>Debe comunicarse con el paciente a través del correo electrónico proporcionado o su número de teléfono para recordarle su cita.</p></center>
+
+                              <center><button type="submit" class="btn btn-info">Cerrar</button></center>
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <!--fin modal-->
+            
             </form>
             <!-- /.form group -->
           </div>

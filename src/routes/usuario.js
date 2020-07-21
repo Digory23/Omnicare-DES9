@@ -44,6 +44,7 @@ module.exports = (app, passport) => {
         const dir = req.body.direccion;
         const tel = req.body.telefono;
         const sex = req.body.sexo;
+        const img = "patient1.png";
         console.log(email)
         await User.update({email_user: email},
             {
@@ -55,7 +56,8 @@ module.exports = (app, passport) => {
                     cedula: ced,
                     direccion: dir,
                     telefono: tel,
-                    sexo: sex
+                    sexo: sex,
+                    img_user: img
                 }
             })
             res.redirect('/');
