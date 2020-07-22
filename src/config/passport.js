@@ -4,13 +4,13 @@ const LocalStrategy = require('passport-local').Strategy;//Indicamos el tipo de 
 const User = require('../models/user');
 
 module.exports = function (passport) {
-  // required for persistent login sessions
-  // passport needs ability to serialize and unserialize users out of session
+  // requerido para sesiones
+  
   passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
 
-  // used to deserialize user
+  // usado para deserializar al usuario
   passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
       done(err, user);
@@ -21,14 +21,12 @@ module.exports = function (passport) {
 
   // Signup de paciente
   passport.use('user-signup', new LocalStrategy({
-    // usernameField y passwordField son palabras reservadas
+    
     usernameField: 'email',
     passwordField: 'password',
-    //nombreField: 'nombre',
-    //apellidoField: 'apellido',
     passReqToCallback : true 
   },
-  function (req, email, password, /*tipo_sangre, cedula, direccion, telefono, sexo, nombre, apellido,*/ done) {
+  function (req, email, password, done) {
     User.findOne({'email_user': email}, function (err, user) {
       if (err) {
         return done(err);
@@ -37,8 +35,7 @@ module.exports = function (passport) {
         return done(null, false, req.flash('signupMessage', 'Este email ya existe'));
       } else {
         var newUser = new User();
-       // const { tipo_sangre, cedula, direccion, telefono, sexo } = req.body;
-       // newUser.create({ tipo_sangre, cedula, direccion, telefono, sexo });
+       
         newUser.nombre_user = req.body.nombre;
         newUser.apellido_user = req.body.apellido;
         newUser.email_user = email;

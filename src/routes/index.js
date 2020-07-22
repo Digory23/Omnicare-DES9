@@ -197,7 +197,7 @@ router.get('/delete/:id', async (req, res, next) => {
     let { id } = req.params;
     await carrito.remove({_id: id});
     res.redirect('/Compras');
-  });
+});
 
 router.get('/Detalle-Producto/:id', async (req, res) => {
     
