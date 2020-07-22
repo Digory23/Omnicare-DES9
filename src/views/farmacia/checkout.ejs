@@ -143,7 +143,7 @@
           return actions.order.capture().then(function(details) {
 
               console.log("result",details)
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              alert('Transaction completed!');
           });
       }
   }).render('#paypal-button-container');
