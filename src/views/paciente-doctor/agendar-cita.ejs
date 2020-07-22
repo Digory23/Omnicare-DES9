@@ -118,12 +118,16 @@
                 }*/
               </style>
 
-              <form action=" " class="form-group" method="post">
+              <form action="/AgendarCita" class="form-group" method="post">
+                <input type="hidden" name="nombre_pac" value="<%=pac.nombre_user%>"/>
+                <input type="hidden" name="apellido_pac" value="<%=pac.apellido_user%>"/>
+                <input type="hidden" name="motivo" value="<%=solicitudcita.razon%>"/>
+                <input type="hidden" name="email_pac" value= "<%=pac.email_user%>"/>
                 <img class="center" src="../img/datetime.png" alt="hora" width="200" height="200" >
                 <label>Seleccione la fecha en la que desea asignar la cita y verifique su disponibilidad.</label><br>
                 <label>Fecha:</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <input type="text" name="fecha" class="form-control datetimepicker-input" data-target="#reservationdate"/>
                       <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -133,7 +137,7 @@
                   <label>Hora:</label>
 
                   <div class="input-group date" id="timepicker" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker"/>
+                    <input type="text" name= "hora" class="form-control datetimepicker-input" data-target="#timepicker"/>
                     <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="far fa-clock"></i></div>
                     </div>

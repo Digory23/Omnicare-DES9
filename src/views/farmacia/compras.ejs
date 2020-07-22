@@ -46,7 +46,7 @@
                                     <%= carrito_compra[i].cantidad %>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    <%= carrito_compra[i].cantidad * carrito_compra[i].precio_unitario%>
+                                    <%= (carrito_compra[i].cantidad * carrito_compra[i].precio_unitario).toFixed(2)%>
                                 </td>
                                 <td class="shoping__cart__item__close">
                                         <a class="icon_close" href="/delete/<%=carrito_compra[i]._id %>"></a>

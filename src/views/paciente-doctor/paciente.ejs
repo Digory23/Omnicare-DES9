@@ -189,55 +189,16 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td>22/5/2020</td>
-                                        <td>10:30 a.m.
-                                        </td>
-                                        <td>Nathalie Acevedo</td>
-                                        <td>Dolor de cabeza</td>
-                                    </tr>
-                                    <tr>
-                                        <td>22/5/2020</td>
-                                        <td>10:30 a.m.
-                                        </td>
-                                        <td>Nathalie Acevedo</td>
-                                        <td>Vómitos</td>
-                                    </tr>
-                                    <tr>
-                                        <td>22/5/2020</td>
-                                        <td>11:00 a.m.
-                                        </td>
-                                        <td>Daniel Diaz</td>
-                                        <td>Mareos</td>
-                                    </tr>
-                                    <tr>
-                                        <td>22/5/2020</td>
-                                        <td>11:45 a.m.
-                                        </td>
-                                        <td>Diana Garcia</td>
-                                        <td>Migrañas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>23/5/2020</td>
-                                        <td>2:00 p.m.</td>
-                                        <td>Diana Garcia</td>
-                                        <td>Solicitud de medicamentos</td>
-                                    </tr>
-                                    <tr>
-                                        <td>22/6/2020</td>
-                                        <td>4:00 p.m.</td>
-                                        <td>Daniel Diaz</td>
-                                        <td>Solicitud de receta</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>22/5/2020</td>
-                                        <td>10:30 a.m.
-                                        </td>
-                                        <td>Nathalie Acevedo</td>
-                                        <td>Mareos</td>
-                                    </tr>
+                                    <% for(var i=0; i < citas.length; i++) { %>
+                                        <tr>
+                                            <td><%= citas[i].fecha %></td>
+                                            <td><%= citas[i].hora %>
+                                            </td>
+                                            <td><%= citas[i].nombre_doctor %> </td>
+                                            <td><%= citas[i].motivo %></td>
+                                        </tr>
+                                        <% } %>
+                                    
                                 </tbody>
                             </table>
                         </div>
