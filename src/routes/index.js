@@ -7,21 +7,8 @@ const productos = require('../models/productos');
 const blog = require('../models/blog');
 const carrito = require('../models/carrito');
 
-//prueba para headers - update: no sirvió xd
-/*router.get('shared/header', function(req, res){
-    res.type('text/html');
-    res.render('index', {
-        header:1
-    });
-});
 
-router.get('shared/header-logged', function(req, res){
-    if(isLoggedIn){
-    res.type('text/html');
-    res.render('index', {
-        header:2
-    });}
-});*/
+
 
 //Rutas para cargar las paginas
 router.get('/', function (req, res) {
@@ -287,15 +274,7 @@ router.get('/Ofertas', function (req, res) {
     });
 });
 
-/*
-router.get('/Paciente', function(req, res){
-    res.type('text/html');
-    res.render('paciente-doctor/login', {
-    }, function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});*/
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {

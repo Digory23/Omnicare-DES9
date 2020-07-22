@@ -18,13 +18,6 @@ module.exports = (app, passport) => {
 
     app.post('/Verificacion', isLoggedIn, async (req, res) => {
         
-        /*const reference = await Referencia.find(
-           {numero: req.body.numero}
-        )
-        console.log(reference);
-        if(reference.length == 1){
-            res.redirect('/Datos-Paciente');
-        }*/
         res.redirect('/Datos-Paciente');
         
     });
@@ -73,7 +66,7 @@ module.exports = (app, passport) => {
     }));
 
 
-    // signup view
+    // vista de registro
     app.get('/Registro', (req, res) => {
         res.type('text/html');
         res.render('paciente-doctor/register', {
