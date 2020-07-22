@@ -22,6 +22,7 @@ router.get('/', function (req, res) {
     });
 });
 
+//vista principal de farmacia
 router.get('/Farmacia', function (req, res) {
     var header
     if (req.isAuthenticated()) {
@@ -34,6 +35,8 @@ router.get('/Farmacia', function (req, res) {
     });
 });
 
+
+//vista principal de Catalogo
 router.get('/Catalogo', function (req, res) {
     var header
     if (req.isAuthenticated()) {
@@ -130,24 +133,6 @@ router.get('/Antibioticos', function (req, res) {
 });
 
 
-//añadir productos al carrito 
-router.get('/Add-Producto/:codigo', async (req, res) => {
-    const prod = new carrito();
-    prod.codigo_prod = req.params.codigo;
-    prod.usuario = req.user.email_user;
-
-    const producto = await productos.findOne(
-        { codigo_prod: req.params.codigo }
-    )
-
-    console.log(producto)
-    prod.nombre_prod = producto.nombre_prod;
-    prod.precio_unitario = producto.precio_unitario;
-
-    await prod.save();
-    res.redirect('/Catalogo')
-
-});
 
 //añadir productos al carrito
 router.post('/Add-Producto', isLoggedIn, async (req, res) => {
@@ -193,6 +178,8 @@ router.get('/Compras', isLoggedIn, async (req, res) => {
     });
 });
 
+
+//borramos productos del carrito
 router.get('/delete/:id', async (req, res, next) => {
     let { id } = req.params;
     await carrito.remove({_id: id});
@@ -218,7 +205,7 @@ router.get('/Detalle-Producto/:id', async (req, res) => {
 });
 
 
-
+//vista para procesar la compra
 router.get('/Checkout', isLoggedIn, async (req, res)=> {
     const carrito_compra = await carrito.find(
         { usuario: req.user.email_user }
