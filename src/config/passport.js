@@ -34,7 +34,7 @@ module.exports = function (passport) {
         return done(err);
       }
       if (user) {
-        return done(null, false, req.flash('signupMessage', 'the email is already taken'));
+        return done(null, false, req.flash('signupMessage', 'Este email ya existe'));
       } else {
         var newUser = new User();
        // const { tipo_sangre, cedula, direccion, telefono, sexo } = req.body;
@@ -74,11 +74,11 @@ module.exports = function (passport) {
     User.findOne({'email_user': email}, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
-        return done(null, false, req.flash('loginMessage', 'No User found'))
+        return done(null, false, req.flash('loginMessage', 'Usuario o contraseña invalidos'))
       }
     
       if (!user.validPassword(password)) {
-        return done(null, false, req.flash('loginMessage', 'Wrong. password'));
+        return done(null, false, req.flash('loginMessage', 'Usuario o contraseña invalidos'));
       }
       return done(null, user);
     });

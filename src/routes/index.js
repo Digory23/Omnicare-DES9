@@ -200,9 +200,11 @@ router.get('/delete/:id', async (req, res, next) => {
   });
 
 router.get('/Detalle-Producto/:id', async (req, res) => {
-    var header
+    
+    var header, modal
     if (req.isAuthenticated()) {
         header = 1
+        modal = 1
     }
     res.type('text/html');
     const prod = await productos.findById(req.params.id);
@@ -210,7 +212,8 @@ router.get('/Detalle-Producto/:id', async (req, res) => {
     res.render('index', {
         page: 6,
         prod,
-        header
+        header,
+        modal
     });
 });
 

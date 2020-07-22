@@ -90,6 +90,13 @@ module.exports = (app, passport) => {
     }));
 
 
+    app.get('/Recuperar-Contrasena', (req, res) => {
+        res.type('text/html');
+        res.render('paciente-doctor/forgot-password', {
+            message: req.flash('signupMessage')
+        });
+    });
+    
     
 
     // logout
