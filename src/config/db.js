@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
 
-// *** Actualiza esta URI con tu nuevo cluster de MongoDB Atlas ***
-const MONGOURI = "mongodb+srv://ocAdmin:omnicare2024@omnicaredb.fs4e5ab.mongodb.net/omnicaredb?retryWrites=true&w=majority&appName=OmnicareDB";
+const MONGOURI = process.env.MONGODB_URI;
 
 const InitiateMongoServer = async () => {
+  if (!MONGOURI) {
+    console.error("ERROR: La variable MONGODB_URI no está definida en el archivo .env");
+    return;
+  }
   try {
     await mongoose.connect(MONGOURI, {
       useNewUrlParser: true

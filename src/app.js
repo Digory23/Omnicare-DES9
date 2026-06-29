@@ -1,4 +1,5 @@
 //dependencias
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const express = require('express'),
 ejs = require('ejs');
 const app = express();
@@ -30,7 +31,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false})) //Para interpretar los datos que vienen de un formulario y poder procesarlo
 // required for passport
 app.use(session({
-	secret: 'Un secreto',
+	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false
 }));
