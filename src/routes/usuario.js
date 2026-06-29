@@ -39,7 +39,7 @@ module.exports = (app, passport) => {
         const sex = req.body.sexo;
         const img = "user.png";
         console.log(email)
-        await User.update({email_user: email},
+        await User.updateOne({email_user: email},
             {
                 $set:
                 { 

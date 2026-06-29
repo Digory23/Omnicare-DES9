@@ -64,7 +64,7 @@ router.get('/Analgesicos', function (req, res) {
     }
     res.type('text/html');
     productos.find({ tipo_prod: "analgésico" }, function (err, data) {
-        productos.find({ tipo_prod: "analgésico" }).count({}, function (err, count) {
+        productos.countDocuments({ tipo_prod: "analgésico" }, function (err, count) {
             res.render('index', {
                 page: 3,
                 productos: data,
@@ -83,7 +83,7 @@ router.get('/Anestesicos', function (req, res) {
     }
     res.type('text/html');
     productos.find({ tipo_prod: "anestésico" }, function (err, data) {
-        productos.find({ tipo_prod: "anestésico" }).count({}, function (err, count) {
+        productos.countDocuments({ tipo_prod: "anestésico" }, function (err, count) {
             res.render('index', {
                 page: 3,
                 productos: data,
@@ -102,7 +102,7 @@ router.get('/Antiacidos', function (req, res) {
     }
     res.type('text/html');
     productos.find({ tipo_prod: "antiácido" }, function (err, data) {
-        productos.find({ tipo_prod: "antiácido" }).count({}, function (err, count) {
+        productos.countDocuments({ tipo_prod: "antiácido" }, function (err, count) {
             res.render('index', {
                 page: 3,
                 productos: data,
@@ -121,7 +121,7 @@ router.get('/Antibioticos', function (req, res) {
     }
     res.type('text/html');
     productos.find({ tipo_prod: "antibiótico" }, function (err, data) {
-        productos.find({ tipo_prod: "antibiótico" }).count({}, function (err, count) {
+        productos.countDocuments({ tipo_prod: "antibiótico" }, function (err, count) {
             res.render('index', {
                 page: 3,
                 productos: data,
@@ -182,7 +182,7 @@ router.get('/Compras', isLoggedIn, async (req, res) => {
 //borramos productos del carrito
 router.get('/delete/:id', async (req, res, next) => {
     let { id } = req.params;
-    await carrito.remove({_id: id});
+    await carrito.deleteOne({_id: id});
     res.redirect('/Compras');
 });
 
