@@ -13,13 +13,13 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "flash": "^1.1.0",
-    "mongoose": "^5.9.21",
+    "mongoose": "^5.13.23",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^3.1.14"
   },
   "engines": {
     "node": ">=18.0.0"
