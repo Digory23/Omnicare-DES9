@@ -63,7 +63,7 @@ module.exports = (app) => {
 
 
     //vista de agendar citas del doctor
-    app.get('/AgendarCita/:id', async (req, res) => {
+    app.get('/AgendarCita/:id', isLoggedIn, async (req, res) => {
         res.type('text/html');
         let id = req.params;
         const solicitudcita= await Solicitud.findById(req.params.id);
@@ -78,7 +78,7 @@ module.exports = (app) => {
     });
 
     //agendar cita en la vista de doctor
-    app.post('/AgendarCita', async(req,res)=>{
+    app.post('/AgendarCita', isLoggedIn, async(req,res)=>{
         const citas = new Cita(req.body);
         citas.doctor = req.user.email_user;
         citas.nombre_doctor = req.user.nombre_user;
@@ -89,7 +89,7 @@ module.exports = (app) => {
 
 
     //citas pendientes del doctor
-    app.get('/CitasPendientes', function (req, res) {
+    app.get('/CitasPendientes', isLoggedIn, function (req, res) {
         res.type('text/html');
         res.render('index-paciente-doctor', {
             tipo_usuario: "4",

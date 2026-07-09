@@ -1,3 +1,14 @@
+const rateLimit = require('express-rate-limit');
+
+// limita intentos de login/registro por IP para dificultar fuerza bruta
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 20,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: 'Demasiados intentos, intenta de nuevo más tarde.'
+});
+
 module.exports = (app, passport) => {
 
     const Referencia = require('../models/referencia');
@@ -30,7 +41,7 @@ module.exports = (app, passport) => {
 
 
        //esta ruta inserta los datos del paciente
-        app.post('/Datos-Paciente', async (req, res, next) => {
+        app.post('/Datos-Paciente', isLoggedIn, async (req, res, next) => {
         const email = req.user.email_user;
         const tipo_san =  req.body.tipo_sangre;
         const ced = req.body.cedula;
@@ -58,7 +69,7 @@ module.exports = (app, passport) => {
 
     
     //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
-    app.post('/Login', passport.authenticate('user-login', {
+    app.post('/Login', authLimiter, passport.authenticate('user-login', {
 
         successRedirect: '/',
         failureRedirect: '/Login',
@@ -76,7 +87,7 @@ module.exports = (app, passport) => {
 
 
     //ruta donde creamos un nuevo usuario (paciente-signup lo creamos en passport)
-    app.post('/Registro', passport.authenticate('user-signup', {
+    app.post('/Registro', authLimiter, passport.authenticate('user-signup', {
         successRedirect: '/',
         failureRedirect: '/Registro',
         failureFlash: true // allow flash messages
@@ -93,9 +104,12 @@ module.exports = (app, passport) => {
     
 
     // logout
-    app.get('/Logout', (req, res) => {
-        req.logout();
-        res.redirect('/');
+    // passport@0.6+ requiere callback obligatorio en req.logout()
+    app.get('/Logout', (req, res, next) => {
+        req.logout(function (err) {
+            if (err) { return next(err); }
+            res.redirect('/');
+        });
     });
 
 };
