@@ -1,5 +1,9 @@
 const rateLimit = require('express-rate-limit');
 
+const usuario = require('../controllers/usuarioController');
+const { isLoggedIn } = require('../middlewares/auth');
+const validators = require('../middlewares/validators');
+
 // limita intentos de login/registro por IP para dificultar fuerza bruta
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutos
@@ -11,121 +15,48 @@ const authLimiter = rateLimit({
 
 module.exports = (app, passport) => {
 
-    const Referencia = require('../models/referencia');
-    const User = require('../models/user');
-    //login
-    app.get('/Login', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/login', {
-            message: req.flash('loginMessage')
-        });
-    });
+    // Login
+    app.get('/Login', usuario.getLogin);
+    app.post('/Login',
+        authLimiter,
+        validators.login,
+        validators.handleValidation('/Login', 'loginMessage'),
+        passport.authenticate('user-login', {
+            successRedirect: '/',
+            failureRedirect: '/Login',
+            failureFlash: true
+        })
+    );
 
-    //ruta de solicitud de numero de referencia para acceder a la clinica
-    app.get('/Verificacion', isLoggedIn,(req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/num-referencia');
-    });
+    // Verificación de paciente
+    app.get('/Verificacion', isLoggedIn, usuario.getVerificacion);
+    app.post('/Verificacion', isLoggedIn, usuario.postVerificacion);
 
-    app.post('/Verificacion', isLoggedIn, async (req, res) => {
-        
-        res.redirect('/Datos-Paciente');
-        
-    });
+    // Datos del paciente
+    app.get('/Datos-Paciente', isLoggedIn, usuario.getDatosPaciente);
+    app.post('/Datos-Paciente',
+        isLoggedIn,
+        validators.datosPaciente,
+        validators.handleValidation('/Datos-Paciente'),
+        usuario.postDatosPaciente
+    );
 
-    //ruta de solicitud de datos del paciente para mostrar en dashboard
-    app.get('/Datos-Paciente',isLoggedIn, (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/datos-paciente');
-    });
+    // Registro
+    app.get('/Registro', usuario.getRegistro);
+    app.post('/Registro',
+        authLimiter,
+        validators.registro,
+        validators.handleValidation('/Registro', 'signupMessage'),
+        passport.authenticate('user-signup', {
+            successRedirect: '/',
+            failureRedirect: '/Registro',
+            failureFlash: true
+        })
+    );
 
+    // Recuperación de contraseña
+    app.get('/Recuperar-Contrasena', usuario.getRecuperar);
 
-       //esta ruta inserta los datos del paciente
-        app.post('/Datos-Paciente', isLoggedIn, async (req, res, next) => {
-        const email = req.user.email_user;
-        const tipo_san =  req.body.tipo_sangre;
-        const ced = req.body.cedula;
-        const dir = req.body.direccion;
-        const tel = req.body.telefono;
-        const sex = req.body.sexo;
-        const img = "user.png";
-        console.log(email)
-        await User.updateOne({email_user: email},
-            {
-                $set:
-                { 
-                    acceso: true,
-                    tipo_user: 1,
-                    tipo_sangre: tipo_san,
-                    cedula: ced,
-                    direccion: dir,
-                    telefono: tel,
-                    sexo: sex,
-                    img_user: img
-                }
-            })
-            res.redirect('/');
-        });
-
-    
-    //ruta donde validaremos el usuario para logearnos (paciente-login es el tipo de autenticacion que creamos en passport)
-    app.post('/Login', authLimiter, passport.authenticate('user-login', {
-
-        successRedirect: '/',
-        failureRedirect: '/Login',
-        failureFlash: true // allow flash messages
-    }));
-
-
-    // vista de registro
-    app.get('/Registro', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/register', {
-            message: req.flash('signupMessage')
-        });
-    });
-
-
-    //ruta donde creamos un nuevo usuario (paciente-signup lo creamos en passport)
-    app.post('/Registro', authLimiter, passport.authenticate('user-signup', {
-        successRedirect: '/',
-        failureRedirect: '/Registro',
-        failureFlash: true // allow flash messages
-    }));
-
-
-    app.get('/Recuperar-Contrasena', (req, res) => {
-        res.type('text/html');
-        res.render('paciente-doctor/forgot-password', {
-            message: req.flash('signupMessage')
-        });
-    });
-    
-    
-
-    // logout
-    // passport@0.6+ requiere callback obligatorio en req.logout()
-    app.get('/Logout', (req, res, next) => {
-        req.logout(function (err) {
-            if (err) { return next(err); }
-            res.redirect('/');
-        });
-    });
-
+    // Logout
+    app.get('/Logout', usuario.logout);
 };
-
-
-function IsPaciente(req, res, next) {
-    if (req.user.acceso) {
-        return next();
-    }
-    res.redirect('/');
-}
-
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/Login');
-}
